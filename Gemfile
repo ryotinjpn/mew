@@ -60,3 +60,5 @@ gem 'bootstrap-sass', '3.3.7'
 gem 'devise'
 
 gem 'pry-rails'
+
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'

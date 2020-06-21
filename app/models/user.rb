@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+
+  # ユーザーのステータスフィードを返す
+  def feed
+    Post.where("user_id = ?", id)
+  end
 end
