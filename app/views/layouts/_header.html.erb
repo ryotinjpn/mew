@@ -3,8 +3,14 @@
     <%= link_to "Mew", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li><%= link_to "ホーム",    root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "プロフィール", current_user %></li>
+          <li><%= link_to "設定", edit_user_registration_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

@@ -1,20 +1,36 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+  <!--タイムライン 投稿数を表示-->
   <div class="col-md-8">
     <% if @user.posts.any? %>
-      <h3>Microposts (<%= @user.posts.count %>)</h3>
+      <h3>投稿 <%= @user.posts.count %>件</h3>
       <ol class="posts">
         <%= render @posts %>
       </ol>
       <%= will_paginate @posts %>
     <% end %>
   </div>
+
+  <!--画像〜フォロー数まで表示-->
+  <aside class="col-md-4">
+    <section class="user_info">
+      <div class="user_top">
+        <h1>
+          <% if !@user.image.blank?%>
+              <img src=<%= @user.image %> class = "icon_image_prof">
+          <% else %>
+              <%= image_tag 'usericon.png' %>
+          <% end %>
+          <%= @user.name %>
+        </h1>
+      </div>
+      <span class="profile" ><%= @user.profile %></span>
+      <% if !@user.youtube.blank?%>
+        <span><%= link_to "YouTubeチャンネル", @user.youtube %></span>
+      <% end %>
+    </section>
+    <section class="stats">
+      <!--%= render 'shared/stats' %-->
+    </section>
+  </aside>
 </div>

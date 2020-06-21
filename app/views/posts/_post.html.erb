@@ -12,7 +12,9 @@
 
   <div>
     <%= link_to image_tag(post.picture.url),post if post.picture? %>
-    <span class="content_timeline"><%= post.content %></span>
+    <div class="content_timeline">
+      <%= post.content %>
+    </div>
   </div>
   
   <!---投稿時間-->
