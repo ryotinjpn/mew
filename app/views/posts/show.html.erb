@@ -11,6 +11,5 @@
 </div>
 
 <!--投稿画像とコメント-->
-
 <%= image_tag @post.picture.url if @post.picture? %>
-<span class="content_timeline"><%= @post.content %></span>
+<div class="content_timeline"><%= @post.content %></div>
