@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get 'main_pages/home'
   get 'main_pages/help'
 
+  resources :posts, only: [:create, :show, :destroy]
+
 end
