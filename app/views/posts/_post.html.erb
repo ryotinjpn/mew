@@ -1,8 +1,26 @@
+<!--タイムライン-->
+
 <li id="post-<%= post.id %>">
-  <%= link_to gravatar_for(post.user, size: 50), post.user %>
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span class="content"><%= post.content %></span>
+  <div class="user_timeline">
+    <% if !post.user.image.blank?%>
+      <img src=<%= post.user.image %> class = "icon_image_feed">
+    <% else %>
+      <%= image_tag 'usericon.png', class: 'icon_image_feed'%>
+    <% end %>
+    <span class="user_timeline2"><%= link_to post.user.name, post.user %></span>
+  </div>
+
+  <div>
+    <%= link_to image_tag(post.picture.url),post if post.picture? %>
+    <span class="content_timeline"><%= post.content %></span>
+  </div>
+  
+  <!---投稿時間-->
   <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
+    投稿 <%= time_ago_in_words(post.created_at) %>前
+    <% if current_page?(current_user) %>
+      <%= link_to "削除", post, method: :delete, data: { confirm: "削除しますか?" } %>
+    <% end %>
   </span>
+
 </li>

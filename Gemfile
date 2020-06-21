@@ -62,3 +62,7 @@ gem 'devise'
 gem 'pry-rails'
 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
