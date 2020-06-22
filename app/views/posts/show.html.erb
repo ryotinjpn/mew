@@ -1,0 +1,15 @@
+<!--投稿の詳細表示-->
+
+<!--投稿者名とプロフ画像-->
+<div class="user_top">
+    <% if !@post.user.image.blank?%>
+    <img src=<%= @post.user.image %> class = "icon_image_feed">
+    <% else %>
+      <%= image_tag 'usericon.png', class: 'icon_image_feed'%>
+    <% end %>
+    <span class="user_timeline2"><%= link_to @post.user.name, @post.user %></span>
+</div>
+
+<!--投稿画像とコメント-->
+<%= image_tag @post.picture.url if @post.picture? %>
+<div class="content_timeline"><%= @post.content %></div>
