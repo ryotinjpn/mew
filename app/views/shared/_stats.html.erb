@@ -6,18 +6,12 @@
     <strong id="following" class="stat">
       <%= @user.following.count %>
     </strong>
-    フォロー中
+    following
   </a>
   <a href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
       <%= @user.followers.count %>
     </strong>
-    フォロワー
-  </a>
-  <a href="<%= likes_user_path(@user) %>">
-    <strong id="likes" class="stat">
-      <%= @user.likes.count %>
-    </strong>
-    いいね
+    followers
   </a>
 </div>
