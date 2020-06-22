@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get 'main_pages/home'
   get 'main_pages/help'
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :posts, only: [:create, :show, :destroy]
 
 end
