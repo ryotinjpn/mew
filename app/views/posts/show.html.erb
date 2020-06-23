@@ -13,3 +13,25 @@
 <!--投稿画像とコメント-->
 <%= image_tag @post.picture.url if @post.picture? %>
 <div class="content_timeline"><%= @post.content %></div>
+
+ <div class="container">
+    <% if current_user %>
+      <%= form_with(model: [@post, @comment], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントを書く", rows: "2" %>
+        <%= form.submit "投稿" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
