@@ -17,8 +17,8 @@
  <div class="container">
     <% if current_user %>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-        <%= form.submit "SEND" %>
+        <%= form.text_area :text, placeholder: "コメントを書く", rows: "2" %>
+        <%= form.submit "投稿" %>
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
@@ -28,7 +28,7 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
-            <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
+            <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
             <%= comment.text %>
           </p>
         <% end %>
