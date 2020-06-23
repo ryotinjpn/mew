@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :comments
+  has_many :like_relationships, dependent: :destroy
+  has_many :likes, through: :like_relationships, source: :post
   # ユーザーのステータスフィードを返す
   def feed
     following_ids = "SELECT followed_id FROM relationships
@@ -35,5 +37,20 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # マイクロポストをライクする
+  def like(post)
+    likes << post
+  end
+
+  # マイクロポストをライク解除する
+  def unlike(post)
+    like_relationships.find_by(post_id: post.id).destroy
+  end
+
+  # 現在のユーザーがライクしていたらtrueを返す
+  def likes?(post)
+    likes.include?(post)
   end
 end
