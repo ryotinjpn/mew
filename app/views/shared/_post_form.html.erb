@@ -5,7 +5,7 @@
     <%= f.text_area :content, placeholder: "キャプションを書く", class: 'form-caption' %>
   </div>
   <span class="picture">
-    <%= f.file_field :picture %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,video/*' %>
   </span>
   <%= f.submit "投稿する", class: "btn btn-primary" %>
 <% end %>

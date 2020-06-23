@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   validates :content, presence: true
   validates :picture, presence: true
-  validate  :picture_size
+  #validate  :picture_size
 
   private
   # アップロードされた画像のサイズをバリデーションする
