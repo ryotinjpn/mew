@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   has_many :comments
+  has_many :like_relationships, dependent: :destroy
+  has_many :liked_by, through: :like_relationships, source: :user
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
