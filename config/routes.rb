@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :likes
     end
   end
   
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:create,:destroy]
   end
   resources :relationships, only: [:create, :destroy]
-
+  resources :like_relationships, only: [:create, :destroy]
 end
