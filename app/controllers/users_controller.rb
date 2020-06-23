@@ -46,6 +46,6 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @posts = @user.likes.paginate(page: params[:page])
     render 'show_like'
-end
+  end
 
 end
