@@ -24,6 +24,11 @@ class User < ApplicationRecord
 
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+
+  mount_uploader :image, PictureUploader
+
+  attr_accessor :current_password
+
   # ユーザーのステータスフィードを返す
   def feed
     following_ids = "SELECT followed_id FROM relationships
@@ -60,5 +65,13 @@ class User < ApplicationRecord
   # 現在のユーザーがライクしていたらtrueを返す
   def likes?(post)
     likes.include?(post)
+  end
+
+  def update_with_password(params, * options)
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+      update_attributes(params, * options)
   end
 end
