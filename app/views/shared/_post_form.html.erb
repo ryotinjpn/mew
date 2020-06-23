@@ -1,14 +1,13 @@
 <!-- ログイン後の投稿欄とボタン-->
 
-<%= form_for(@post) do |f| %>
-<div class="row">
-  <div class="col-md-12">
-      <%= f.text_area :content, placeholder: "キャプションを書く", class: 'form-caption'%>
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-      <%= f.submit "投稿する", class: "btn btn-primary btn-post" %>
+<%= form_with(model: @post, local: true) do |f| %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "キャプションを書く", class: 'form-caption' %>
   </div>
-</div>
-    
+  <span class="picture">
+    <%= f.file_field :picture %>
+  </span>
+  <%= f.submit "投稿する", class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">

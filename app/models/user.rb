@@ -4,18 +4,31 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, uniqueness: true
+
   has_many :posts, dependent: :destroy
+  
   has_many :active_relationships, class_name:  "Relationship", 
                                   foreign_key: "follower_id", 
                                   dependent: :destroy
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
-                                   dependent:   :destroy
+                                   dependent: :destroy
+
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  
   has_many :comments
+  
   has_many :like_relationships, dependent: :destroy
   has_many :likes, through: :like_relationships, source: :post
+
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
+  mount_uploader :image, PictureUploader
+
+  attr_accessor :current_password
+
   # ユーザーのステータスフィードを返す
   def feed
     following_ids = "SELECT followed_id FROM relationships
@@ -52,5 +65,13 @@ class User < ApplicationRecord
   # 現在のユーザーがライクしていたらtrueを返す
   def likes?(post)
     likes.include?(post)
+  end
+
+  def update_with_password(params, * options)
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+      update_attributes(params, * options)
   end
 end
