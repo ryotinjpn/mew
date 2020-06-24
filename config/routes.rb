@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'main_pages#home'
-  get 'users/new'
-  get 'main_pages/home'
-  get 'main_pages/help'
+  get 'main_pages/protection', to: 'main_pages#protection'
 
   resources :users do
     member do

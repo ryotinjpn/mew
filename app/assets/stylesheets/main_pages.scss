@@ -1,9 +1,26 @@
 /* universal */
+html,
+body,
+div.background {
+  height: 100%; /* 「div.background」に対してはmin-heightに対応していないブラウザ用 */
+  background-color: #ffaa96;
+}
+ 
+div.background {
+  min-height: 100%; /* 最小の高さ */
+  width: 300px;
+  background-color: #ffaa96;
+}
+ 
+body > div.background {
+  height: auto; /* 要素を超えた分の背景が伸びないブラウザ用 */
+  background-color: #ffaa96;
+}
 
 body {
   padding-top: 60px;
-  font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","游ゴシック","メイリオ","Meiryo","Osaka","ＭＳ Ｐゴシック","MS PGothic",sans-serif;
-  background-color: #ffaa96;
+  font-family: 'Open Sans',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","游ゴシック","メイリオ","Meiryo","Osaka","ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+  color: #5e5e5e;
 }
 
 a {
@@ -112,3 +129,4 @@ p {
   width: 40px;
   height: 40px;
 }
+

@@ -4,13 +4,31 @@
     <nav>
     <%= link_to image_tag("logo.png", class:"logo_image"), root_path %>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ホーム",    root_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "プロフィール", current_user %></li>
-          <li><%= link_to "設定", edit_user_registration_path %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to current_user , method: :get do %>
+              <i class="fas fa-user"></i>
+            <% end %>
+          <li>
+          <li>
+            <%= link_to main_pages_protection_path , method: :get do %>
+              <i class="fas fa-cat"></i>
+            <% end %>
+          <li>
+            <%= link_to edit_user_registration_path, method: :get do %>
+              <i class="fas fa-cog"></i>
+            <% end %>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </li>
         <% else %>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li>
+            <%= link_to new_user_session_path, method: :get do %>
+              <i class="fas fa-sign-in-alt"></i>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </nav>

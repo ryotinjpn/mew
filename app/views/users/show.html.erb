@@ -5,7 +5,6 @@
       <!--タイムライン 投稿数を表示-->
       <div class="col-md-8">
         <% if @user.posts.any? %>
-          <h3>投稿 <%= @user.posts.count %>件</h3>
           <ol class="posts">
             <%= render @posts %>
           </ol>
@@ -27,25 +26,33 @@
             </h1>
           </div>
           <span class="profile" ><%= @user.profile %></span>
-          <% if !@user.youtube.blank?%>
-            <span><%= link_to "YouTubeチャンネル", @user.youtube %></span>
-          <% end %>
 
-          <%= render 'follow_form' if user_signed_in? %>
-
-          <!--ダイレクトメッセージ-->
-          <% unless @user.id == current_user.id %>
-            <% if @isRoom == true %>
-              <p><a href="/rooms/<%= @roomId %>" class= "btn btn-primary btn-dm" >ダイレクトメッセージ</a>
-            <% else %>
-              <%= form_for @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, value: @user.id %>
-                <% end %>
-                <%= f.submit "ダイレクトメッセージ", class:"btn btn-primary btn-dm"%>
+          <div class="action_btn">
+            <!--YouTube-->
+            <% if !@user.youtube.blank?%>
+              <%= link_to @user.youtube , method: :get do %>
+                <i class="fab fa-youtube"></i>
               <% end %>
             <% end %>
-          <% end %>
+            <!--ダイレクトメッセージ-->
+            <% unless @user.id == current_user.id %>
+              <% if @isRoom == true %>
+                <a href="/rooms/<%= @roomId %>" class= "fas fa-envelope" ></a>
+              <% else %>
+                <%= form_with model: @room do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, value: @user.id %>
+                  <% end %>
+                  <%= f.button type: "submit", class: "btn_dm" do %>
+                    <i class='fas fa-envelope'></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+            <!--フォローボタン-->
+            <%= render 'follow_form' if user_signed_in? %>
+          </div>
+          
         </section>
         <section class="stats">
           <%= render 'shared/stats' %>
