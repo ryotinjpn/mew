@@ -1,52 +1,56 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <!--タイムライン 投稿数を表示-->
-  <div class="col-md-8">
-    <% if @user.posts.any? %>
-      <h3>投稿 <%= @user.posts.count %>件</h3>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
-  </div>
-
-  <!--画像〜フォロー数まで表示-->
-  <aside class="col-md-4">
-    <section class="user_info">
-      <div class="user_top">
-        <h1>
-          <% if !@user.image.blank?%>
-              <img src=<%= @user.image %> class = "icon_image_prof">
-          <% else %>
-              <%= image_tag 'usericon.png' %>
-          <% end %>
-          <%= @user.name %>
-        </h1>
-      </div>
-      <span class="profile" ><%= @user.profile %></span>
-      <% if !@user.youtube.blank?%>
-        <span><%= link_to "YouTubeチャンネル", @user.youtube %></span>
-      <% end %>
-
-      <%= render 'follow_form' if user_signed_in? %>
-
-      <!--ダイレクトメッセージ-->
-      <% unless @user.id == current_user.id %>
-        <% if @isRoom == true %>
-          <p><a href="/rooms/<%= @roomId %>" class= "btn btn-primary btn-dm" >ダイレクトメッセージ</a>
-        <% else %>
-          <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, value: @user.id %>
-            <% end %>
-            <%= f.submit "ダイレクトメッセージ", class:"btn btn-primary btn-dm"%>
-          <% end %>
+<div class="container">
+  <div class="main_view">
+    <div class="row">
+      <!--タイムライン 投稿数を表示-->
+      <div class="col-md-8">
+        <% if @user.posts.any? %>
+          <h3>投稿 <%= @user.posts.count %>件</h3>
+          <ol class="posts">
+            <%= render @posts %>
+          </ol>
+          <%= will_paginate @posts %>
         <% end %>
-      <% end %>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
+      </div>
+
+      <!--画像〜フォロー数まで表示-->
+      <aside class="col-md-4">
+        <section class="user_info">
+          <div class="user_top">
+            <h1>
+              <% if !@user.image.blank?%>
+                  <img src=<%= @user.image %> class = "icon_image_prof">
+              <% else %>
+                  <%= image_tag 'usericon.png' %>
+              <% end %>
+              <%= @user.name %>
+            </h1>
+          </div>
+          <span class="profile" ><%= @user.profile %></span>
+          <% if !@user.youtube.blank?%>
+            <span><%= link_to "YouTubeチャンネル", @user.youtube %></span>
+          <% end %>
+
+          <%= render 'follow_form' if user_signed_in? %>
+
+          <!--ダイレクトメッセージ-->
+          <% unless @user.id == current_user.id %>
+            <% if @isRoom == true %>
+              <p><a href="/rooms/<%= @roomId %>" class= "btn btn-primary btn-dm" >ダイレクトメッセージ</a>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "ダイレクトメッセージ", class:"btn btn-primary btn-dm"%>
+              <% end %>
+            <% end %>
+          <% end %>
+        </section>
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+      </aside>
+    </div>
+  </div>
 </div>

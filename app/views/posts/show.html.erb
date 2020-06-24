@@ -1,37 +1,39 @@
 <!--投稿の詳細表示-->
 
 <!--投稿者名とプロフ画像-->
-<div class="user_top">
-    <% if !@post.user.image.blank?%>
-    <img src=<%= @post.user.image %> class = "icon_image_feed">
-    <% else %>
-      <%= image_tag 'usericon.png', class: 'icon_image_feed'%>
-    <% end %>
-    <span class="user_timeline2"><%= link_to @post.user.name, @post.user %></span>
-</div>
-
-<!--投稿画像とコメント-->
-<%= image_tag @post.picture.url if @post.picture? %>
-<div class="content_timeline"><%= @post.content %></div>
-
- <div class="container">
-    <% if current_user %>
-      <%= form_with(model: [@post, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントを書く", rows: "2" %>
-        <%= form.submit "投稿" %>
-      <% end %>
-    <% else %>
-      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-    <% end %>
-    <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-          <p>
-            <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
-            <%= comment.text %>
-          </p>
+<div class="container">
+  <div class="main_view">
+    <div class="user_top">
+        <% if !@post.user.image.blank?%>
+        <img src=<%= @post.user.image %> class = "icon_image_feed">
+        <% else %>
+          <%= image_tag 'usericon.png', class: 'icon_image_feed'%>
         <% end %>
+        <span class="user_timeline2"><%= link_to @post.user.name, @post.user %></span>
+    </div>
+
+    <!--投稿画像とコメント-->
+    <%= image_tag @post.picture.url if @post.picture? %>
+    <div class="content_timeline"><%= @post.content %></div>
+      <% if current_user %>
+        <%= form_with(model: [@post, @comment], local: true) do |form| %>
+          <%= form.text_area :text, placeholder: "コメントを書く", rows: "2" %>
+          <%= form.submit "投稿" %>
+        <% end %>
+      <% else %>
+        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
       <% end %>
+      <div class="comments">
+        <h4>＜コメント一覧＞</h4>
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <p>
+              <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
+              <%= comment.text %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+</div>

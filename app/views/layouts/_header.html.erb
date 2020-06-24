@@ -1,7 +1,8 @@
-<header class="navbar navbar-fixed-top navbar-inverse"style="background-color: #692f74;">
+<header class="navbar-fixed-top navbar-light shadow-lg" style="background-color: white;">
+<div class="shadow-lg">
   <div class="container">
-    <%= link_to "Mew", root_path, id: "logo" %>
     <nav>
+    <%= link_to image_tag("logo.png", class:"logo_image"), root_path %>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム",    root_path %></li>
         <% if user_signed_in? %>
@@ -13,5 +14,6 @@
         <% end %>
       </ul>
     </nav>
+  </div>
   </div>
 </header>
