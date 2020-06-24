@@ -4,10 +4,8 @@
       <div class="row">
         <div class="col-lg-8">
           <%= render 'shared/post_form' %>
-          <h3>タイムライン</h3>
           <%= render 'shared/feed' %>
         </div>
-
         <div class="col-lg-4">
           <div class="user_top">
             <% if !current_user.image.blank?%>
