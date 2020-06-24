@@ -30,14 +30,15 @@
     </div>
   </div>
 
-
 <% else %>
-
-<div class="center">
-  <% provide(:title, "ホーム") %>
-  
-  <%= image_tag "cattop.jpg", class: "img-responsive" %>
-  <p>Mew</p>
-  <a><%= link_to "新規登録", new_user_registration_path, class: "btn btn-lg btn-primary" %></a>
-</div>
+  <div class="center">
+    <% provide(:title, "ホーム") %>
+    <div class="top_image">
+      <%= image_tag "cattop.jpg", class: "top_cat" %>
+      <div class="top_image2">
+        <%= image_tag "logo.png", class: "top_logo" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "top_btn" %>
+      </div>
+    </div>
+  </div>
 <% end %>
