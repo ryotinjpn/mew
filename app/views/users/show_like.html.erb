@@ -2,7 +2,7 @@
 <div class="container">
   <div class="main_view">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-lg-9">
         <h3><%= @title %></h3>
         <% if @user.likes.any? %>
           <ol class="posts">
@@ -11,7 +11,7 @@
           <%= will_paginate @posts %>
         <% end %>
       </div>
-      <aside class="col-md-4">
+      <aside class="col-lg-3">
         <section class="user_info">
           <%= render 'shared/user_info' %>
         </section>

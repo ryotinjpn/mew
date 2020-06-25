@@ -2,11 +2,11 @@
   <div class="container">
     <div class="main_view">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
           <%= render 'shared/post_form' %>
           <%= render 'shared/feed' %>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="user_top">
             <% if !current_user.image.blank?%>
               <img src=<%= current_user.image %> class = "icon_image_prof">

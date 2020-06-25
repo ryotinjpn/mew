@@ -3,19 +3,19 @@
   <div class="main_view">
     <div class="row">
       <!--タイムライン 投稿数を表示-->
-      <div class="col-md-8">
+      <div class="col-lg-9">
         <% if @user.posts.any? %>
-        <ol class="posts">
-          <%= render @posts %>
-        </ol>
-        <%= will_paginate @posts %>
+          <ol class="posts">
+            <%= render @posts %>
+          </ol>
+          <%= will_paginate @posts %>
         <% end %>
       </div>
 
       <!--画像〜フォロー数まで表示-->
-      <aside class="col-md-4">
+      <aside class="col-lg-3">
         <section class="user_info">
-          <%= render 'shared/user_info' %>
+        <%= render 'shared/user_info' %>
         </section>
         <section class="stats">
           <%= render 'shared/stats' %>

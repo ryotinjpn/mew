@@ -15,14 +15,14 @@
 <!--ダイレクトメッセージ-->
   <% unless @user.id == current_user.id %>
     <% if @isRoom == true %>
-      <a href="/rooms/<%= @roomId %>" class="fas fa-envelope fa_icon"></a>
+      <a href="/rooms/<%= @roomId %>" class="fas fa-envelope fa_icon2"></a>
     <% else %>
     <%= form_with model: @room do |f| %>
       <%= fields_for @entry do |e| %>
       <%= e.hidden_field :user_id, value: @user.id %>
       <% end %>
     <%= f.button type: "submit", class: "btn_dm" do %>
-      <i class="fas fa-envelope fa_icon"></i>
+      <i class="fas fa-envelope fa_icon2"></i>
     <% end %>
   <% end %>
   <% end %>
@@ -30,7 +30,7 @@
   <!--YouTube-->
   <% unless @user.youtube.blank?%>
     <%= link_to @user.youtube , method: :get do %>
-      <i class="fab fa-youtube fa_icon"></i>
+      <i class="fab fa-youtube fa_icon2 youtube_icon"></i>
     <% end %>
   <% end %>
   
