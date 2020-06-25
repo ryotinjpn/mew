@@ -1,19 +1,19 @@
 <!-- ログイン後の投稿欄とボタン-->
+  <%= form_with(model: @post, local: true, class:"post_form") do |f| %>
+      <div class="form-item">
+        <%= f.text_area :content, placeholder: "キャプションを書く", id:"form_caption" %>
+        <span class="picture">
+          <%= f.label :picture, class: 'picture_label' do %>
+            <%= icon('far', 'image',class: "picture_icon")%>
+            <div id ="picture_file">
+            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,video/*' %>
+            </div>
+          <% end %>
+        </span>
+      </div>
+  <%= f.submit "投稿する", class: "btn_post" %>
+  <% end %>
 
-<%= form_with(model: @post, local: true) do |f| %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "キャプションを書く", class: 'form-caption' %>
-    <span class="picture">
-      <%= f.label :picture, class: 'picture_label' do %>
-        <%= icon('far', 'image',class: "picture_icon")%>
-        <div id ="picture_file">
-        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,video/*' %>
-        </div>
-      <% end %>
-    </span>
-    <%= f.submit "投稿する", class: "btn_post" %>
-  </div>
-<% end %>
 
 <script type="text/javascript">
   $('#post_picture').bind('change', function() {
