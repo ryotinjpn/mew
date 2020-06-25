@@ -12,13 +12,7 @@
 <span class="profile"><%= @user.profile %></span>
 
 <div class="action_btn">
-  <!--YouTube-->
-  <% if !@user.youtube.blank?%>
-    <%= link_to @user.youtube , method: :get do %>
-      <i class="fab fa-youtube fa_icon"></i>
-    <% end %>
-  <% end %>
-  <!--ダイレクトメッセージ-->
+<!--ダイレクトメッセージ-->
   <% unless @user.id == current_user.id %>
     <% if @isRoom == true %>
       <a href="/rooms/<%= @roomId %>" class="fas fa-envelope fa_icon"></a>
@@ -28,11 +22,18 @@
       <%= e.hidden_field :user_id, value: @user.id %>
       <% end %>
     <%= f.button type: "submit", class: "btn_dm" do %>
-      <i class='fas fa-envelop fa_icon'></i>
+      <i class="fas fa-envelope fa_icon"></i>
     <% end %>
   <% end %>
   <% end %>
   <% end %>
+  <!--YouTube-->
+  <% unless @user.youtube.blank?%>
+    <%= link_to @user.youtube , method: :get do %>
+      <i class="fab fa-youtube fa_icon"></i>
+    <% end %>
+  <% end %>
+  
   <!--フォローボタン-->
   <%= render 'follow_form' if user_signed_in? %>
 </div>

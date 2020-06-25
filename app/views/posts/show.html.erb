@@ -12,7 +12,12 @@
       <span class="user_name"><%= link_to @post.user.name, @post.user %></span>
     </div>
     <!--投稿画像-->
-    <%= image_tag(@post.picture.url, width: "100%", height: "100%") if @post.picture? %>
+    <% if @post.picture.file.content_type.include?('image/') %>
+        <%= link_to image_tag(@post.picture.url(:thumb), width: "100%", height: "100%"),@post if @post.picture?  %>
+      <% else %>
+        <%= video_tag @post.picture.url, width: "100%", height: "100%", 
+                                        controls: true, autobuffer: true %>
+      <% end %>
     <!--いいね-->
     <span id="like_form_<%= @post.id %>">
       <% if @post.liked_by.include?(current_user) %>
@@ -27,12 +32,12 @@
     <span class="content_timeline"><%= time_ago_in_words(@post.created_at) %>前</span>
     <!--コメント-->
     <% if current_user %>
-    <div class="comment_form">
     <%= form_with(model: [@post, @comment], local: true) do |form| %>
+    <div class="comment_form">
       <div class="form-item">
       <%= form.text_area :text, placeholder: "コメントを書く", rows: "2" %>
       </div>
-    <%= form.submit "投稿", class: "btn_post" %>
+    <%= form.submit "投稿", class: "btn_comment" %>
     </div>
     <% end %>
     <% else %>
@@ -41,11 +46,15 @@
     </strong>
     <% end %>
     <div class="comments">
-      <h4>＜コメント一覧＞</h4>
       <% if @comments %>
       <% @comments.each do |comment| %>
       <p>
-        <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
+        <% if !comment.user.image.blank?%>
+        <img src=<%= comment.user.image %> class="icon_image_feed">
+        <% else %>
+        <%= image_tag 'usericon.png', class: 'icon_image_feed'%>
+        <% end %>
+        <%= link_to comment.user.name, "/users/#{comment.user_id}" %>
         <%= comment.text %>
       </p>
       <% end %>
