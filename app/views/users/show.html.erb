@@ -5,54 +5,17 @@
       <!--タイムライン 投稿数を表示-->
       <div class="col-md-8">
         <% if @user.posts.any? %>
-          <ol class="posts">
-            <%= render @posts %>
-          </ol>
-          <%= will_paginate @posts %>
+        <ol class="posts">
+          <%= render @posts %>
+        </ol>
+        <%= will_paginate @posts %>
         <% end %>
       </div>
 
       <!--画像〜フォロー数まで表示-->
       <aside class="col-md-4">
         <section class="user_info">
-          <div class="user_top">
-            <h1>
-              <% if !@user.image.blank?%>
-                  <img src=<%= @user.image %> class = "icon_image_prof">
-              <% else %>
-                  <%= image_tag 'usericon.png' %>
-              <% end %>
-              <%= @user.name %>
-            </h1>
-          </div>
-          <span class="profile" ><%= @user.profile %></span>
-
-          <div class="action_btn">
-            <!--YouTube-->
-            <% if !@user.youtube.blank?%>
-              <%= link_to @user.youtube , method: :get do %>
-                <i class="fab fa-youtube"></i>
-              <% end %>
-            <% end %>
-            <!--ダイレクトメッセージ-->
-            <% unless @user.id == current_user.id %>
-              <% if @isRoom == true %>
-                <a href="/rooms/<%= @roomId %>" class= "fas fa-envelope" ></a>
-              <% else %>
-                <%= form_with model: @room do |f| %>
-                  <%= fields_for @entry do |e| %>
-                    <%= e.hidden_field :user_id, value: @user.id %>
-                  <% end %>
-                  <%= f.button type: "submit", class: "btn_dm" do %>
-                    <i class='fas fa-envelope'></i>
-                  <% end %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <!--フォローボタン-->
-            <%= render 'follow_form' if user_signed_in? %>
-          </div>
-          
+          <%= render 'shared/user_info' %>
         </section>
         <section class="stats">
           <%= render 'shared/stats' %>
