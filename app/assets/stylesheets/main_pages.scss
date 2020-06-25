@@ -21,13 +21,18 @@ body>div.background {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 50px;
   font-family: 'Open Sans', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "游ゴシック", "メイリオ", "Meiryo", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   color: #5e5e5e;
 }
 
 a {
   text-decoration: none !important;
+  color: #764B0A;
+}
+a:hover {
+  text-decoration: none !important;
+  color: #764B0A;
 }
 
 section {
@@ -39,7 +44,7 @@ textarea {
 }
 
 .main_view {
-  margin-top: -10px;
+  padding-top: 30px;
   background-color: white;
   height: 100%;
   min-height: 100vh
@@ -140,4 +145,10 @@ p {
   margin-top: 7px;
   width: 40px;
   height: 40px;
+}
+
+.fa_icon {
+  font-size: 22px;
+  color: #764B0A;
+  cursor: pointer;
 }

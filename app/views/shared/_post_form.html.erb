@@ -4,7 +4,7 @@
   <%= f.text_area :content, placeholder: "キャプションを書く", id:"form_caption" %>
   <span class="picture">
     <%= f.label :picture, class: 'picture_label' do %>
-    <%= icon('far', 'image',class: "picture_icon")%>
+    <%= icon('far', 'image',class: "picture_icon fa_icon")%>
     <div id="picture_file">
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,video/*' %>
     </div>

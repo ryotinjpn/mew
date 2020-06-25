@@ -7,26 +7,26 @@
           <% if user_signed_in? %>
           <li>
             <%= link_to current_user , method: :get do %>
-            <i class="fas fa-user"></i>
+            <i class="fas fa-user fa_icon"></i>
             <% end %>
           <li>
           <li>
             <%= link_to main_pages_protection_path , method: :get do %>
-            <i class="fas fa-cat"></i>
+            <i class="fas fa-cat fa_icon"></i>
             <% end %>
           <li>
             <%= link_to edit_user_registration_path, method: :get do %>
-            <i class="fas fa-cog"></i>
+            <i class="fas fa-cog fa_icon"></i>
             <% end %>
           <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt fa_icon"></i>
             <% end %>
           </li>
           <% else %>
           <li>
             <%= link_to new_user_session_path, method: :get do %>
-            <i class="fas fa-sign-in-alt"></i>
+            <i class="fas fa-sign-in-alt fa_icon"></i>
             <% end %>
           </li>
           <% end %>

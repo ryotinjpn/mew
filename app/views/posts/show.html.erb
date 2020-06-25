@@ -3,37 +3,54 @@
 <!--投稿者名とプロフ画像-->
 <div class="container">
   <div class="main_view">
-    <div class="user_top">
-        <% if !@post.user.image.blank?%>
-        <img src=<%= @post.user.image %> class = "icon_image_feed">
-        <% else %>
-          <%= image_tag 'usericon.png', class: 'icon_image_feed'%>
-        <% end %>
-        <span class="user_timeline2"><%= link_to @post.user.name, @post.user %></span>
-    </div>
-
-    <!--投稿画像とコメント-->
-    <%= image_tag @post.picture.url if @post.picture? %>
-    <div class="content_timeline"><%= @post.content %></div>
-      <% if current_user %>
-        <%= form_with(model: [@post, @comment], local: true) do |form| %>
-          <%= form.text_area :text, placeholder: "コメントを書く", rows: "2" %>
-          <%= form.submit "投稿" %>
-        <% end %>
+    <div class="user_timeline">
+      <% if !@post.user.image.blank?%>
+      <img src=<%= @post.user.image %> class="icon_image_feed">
       <% else %>
-        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+      <%= image_tag 'usericon.png', class: 'icon_image_feed'%>
       <% end %>
-      <div class="comments">
-        <h4>＜コメント一覧＞</h4>
-        <% if @comments %>
-          <% @comments.each do |comment| %>
-            <p>
-              <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
-              <%= comment.text %>
-            </p>
-          <% end %>
-        <% end %>
+      <span class="user_name"><%= link_to @post.user.name, @post.user %></span>
+    </div>
+    <!--投稿画像-->
+    <%= image_tag(@post.picture.url, width: "100%", height: "100%") if @post.picture? %>
+    <!--いいね-->
+    <span id="like_form_<%= @post.id %>">
+      <% if @post.liked_by.include?(current_user) %>
+        <%= render "posts/unlike", post: @post %>
+      <% else %>
+        <%= render "posts/like", post: @post %>
+      <% end %>
+    </span>
+    <!--キャプション-->
+    <div class="content_timeline"><%= @post.content %></div>
+    <!---投稿時間-->
+    <span class="content_timeline"><%= time_ago_in_words(@post.created_at) %>前</span>
+    <!--コメント-->
+    <% if current_user %>
+    <div class="comment_form">
+    <%= form_with(model: [@post, @comment], local: true) do |form| %>
+      <div class="form-item">
+      <%= form.text_area :text, placeholder: "コメントを書く", rows: "2" %>
       </div>
+    <%= form.submit "投稿", class: "btn_post" %>
+    </div>
+    <% end %>
+    <% else %>
+    <strong>
+      <p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
+    </strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+      <% @comments.each do |comment| %>
+      <p>
+        <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
+        <%= comment.text %>
+      </p>
+      <% end %>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
