@@ -1,0 +1,27 @@
+.form
+  .form-wrapper
+    %h1 新規登録
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .form-item
+        = f.label :name
+        %br/
+        = f.text_field :name, autofocus: true
+      .form-item
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .form-item
+        = f.label :password
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length}文字以上)
+        %br/
+        = f.password_field :password, autocomplete: "new-password"
+      .form-item
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .button-panel
+        = f.submit "新規登録", class: "button"
+    = render "devise/shared/links"

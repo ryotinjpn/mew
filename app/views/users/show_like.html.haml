@@ -1,0 +1,15 @@
+- provide(:title, @user.name)
+.container
+  .main_view
+    .row
+      .col-lg-9
+        %h3= @title
+        - if @user.likes.any?
+          %ol.posts
+            = render @posts
+          = will_paginate @posts
+      %aside.col-lg-3
+        %section.user_info
+          = render 'shared/user_info'
+        %section.stats
+          = render 'shared/stats'

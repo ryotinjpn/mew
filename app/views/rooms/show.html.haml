@@ -1,0 +1,31 @@
+.container
+  .dm_body
+    .dm_main
+      .dm_timeline
+        %h1 Direct
+        %h4.dm_menber
+          Member:
+          - @entries.each do |e|
+            %strong
+              %a{:href => "/users/#{e.user.id}"}= e.user.name
+        = form_with model: @message, local: true do |f|
+          .dm_form
+            .form-item
+              = f.text_area :body, placeholder: "メッセージを入力して下さい" , :size => 70
+              = f.hidden_field :room_id, value: @room.id
+              %br/
+            = f.submit "送信", class: "dm_btn"
+          %hr/
+          - if @messages.present?
+            - @messages.each do |message|
+              %p
+                - if !message.user.image.blank?
+                  %img{:src => "<haml_loud"}/
+                  message.user.image  class="icon_image_feed"&gt;
+                - else
+                  = image_tag 'usericon.png', class: 'icon_image_feed'
+                = link_to message.user.name, "/users/#{message.user_id}"
+                %strong= message.body
+              %hr/
+          - else
+            %h3.text-center メッセージはまだありません
