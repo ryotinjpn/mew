@@ -1,39 +1,25 @@
 <!--フォローとフォロワーの一覧表示-->
 <% provide(:title, @title) %>
-
-<div class="row">
-
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
-    <% end %>
+<div class="container">
+  <div class="main_view">
+    <div class="row">
+      <div class="col-lg-9">
+        <h3><%= @title %></h3>
+        <% if @users.any? %>
+          <ul class="users follow">
+            <%= render @users %>
+          </ul>
+          <%= will_paginate %>
+        <% end %>
+      </div>
+      <aside class="col-lg-3">
+        <section class="user_info">
+          <%= render 'shared/user_info' %>
+        </section>
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+      </aside>
+    </div>
   </div>
-
-  <aside class="col-md-4">
-    <section class="user_info">
-    <div class="user_top">
-      <h1>
-        <% if !@user.image.blank?%>
-            <img src=<%= @user.image %> class = "icon_image_prof">
-        <% else %>
-            <%= image_tag 'usericon.png' %>
-        <% end %>
-        <%= @user.name %>
-        </div>
-        <span class="profile" ><%= @user.profile %></span>
-        <% if !@user.youtube.blank?%>
-          <span><%= link_to "YouTubeチャンネル", @user.youtube %></span>
-        <% end %>
-        <%= render 'follow_form' if user_signed_in? %>
-      </h1>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-
 </div>

@@ -7,6 +7,6 @@ class MainPagesController < ApplicationController
     end
   end
 
-  def help
+  def protection
   end
 end

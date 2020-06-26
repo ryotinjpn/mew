@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   #投稿の詳細
-  def show 
+  def show
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user)

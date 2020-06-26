@@ -1,17 +1,39 @@
 <!-- ログイン後home画面のプロフィール画像、名前、メールアドレス-->
-<% if !current_user.image.blank?%>
-    <img src=<%= current_user.image %> class = "icon_image_prof">
-<% else %>
+<div class="user_top">
+  <h1>
+    <% if !@user.image.blank?%>
+    <img src=<%= @user.image %> class="icon_image_prof">
+    <% else %>
     <%= image_tag 'usericon.png' %>
-<% end %>
+    <% end %>
+    <%= @user.name %>
+  </h1>
+</div>
+<span class="profile"><%= @user.profile %></span>
 
-<h1><%= current_user.name %></h1>
-<h1><%= current_user.email %></h1>
-<h1><%= current_user.profile %></h1>
-
-<div class="stats">
-  <% if !current_user.youtube.blank?%>
-    <%= link_to("YouTubeチャンネル", current_user.youtube) %>
+<div class="action_btn">
+<!--ダイレクトメッセージ-->
+  <% unless @user.id == current_user.id %>
+    <% if @isRoom == true %>
+      <a href="/rooms/<%= @roomId %>" class="fas fa-envelope fa_icon2"></a>
+    <% else %>
+    <%= form_with model: @room do |f| %>
+      <%= fields_for @entry do |e| %>
+      <%= e.hidden_field :user_id, value: @user.id %>
+      <% end %>
+    <%= f.button type: "submit", class: "btn_dm" do %>
+      <i class="fas fa-envelope fa_icon2"></i>
+    <% end %>
   <% end %>
-    <span>投稿<%= current_user.posts.count %>件</span>
+  <% end %>
+  <% end %>
+  <!--YouTube-->
+  <% unless @user.youtube.blank?%>
+    <%= link_to @user.youtube , method: :get do %>
+      <i class="fab fa-youtube fa_icon2 youtube_icon"></i>
+    <% end %>
+  <% end %>
+  
+  <!--フォローボタン-->
+  <%= render 'follow_form' if user_signed_in? %>
 </div>
