@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!,  only: [:index, :show, :edit, :update, :destroy,:following, :followers, :likes]
   before_action :dm,  only: [:show,:following, :followers, :likes]
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page]).order("RAND()").all
     #@users = User.where(activated: true).paginate(page: params[:page])
   end
 
