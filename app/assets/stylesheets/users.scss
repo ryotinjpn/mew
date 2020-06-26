@@ -94,13 +94,16 @@ aside {
 
 .user_top2{
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
+
 .users{
   list-style: none;
   margin-top: 10px;
 }
 
-.all_user{
+.all_user2{
   display: flex;
   justify-content: center;
 
