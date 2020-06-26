@@ -123,3 +123,19 @@ span.picture {
   appearance: none;
 }
 
+.search-post{
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.search-btn{
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  right: 5px;
+}
