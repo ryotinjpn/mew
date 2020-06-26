@@ -1,3 +1,39 @@
-// Place all the styles related to the rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.dm_body {
+  display: flex;
+  justify-content: center;
+}
+
+
+.dm_main {
+  display: flex;
+  justify-content: center;
+  width: 1170px;
+  height: 100%;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.dm_timeline {
+  width: 50%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.dm_menber {
+  padding: 0 22px;
+}
+
+.dm_form {
+  display: flex;
+  justify-content: center;
+}
+
+.dm_btn {
+  color: #764B0A;
+  background-color: white;
+  border: 3px solid #764B0A;
+  margin: 0 0 15px 10px;
+  width: 90px;
+}
+
