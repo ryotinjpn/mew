@@ -8,6 +8,8 @@
           %ol.posts
             = render @posts
           = will_paginate @posts
+        - else
+          %h3.text-center 投稿がありません！
       / 画像〜フォロー数まで表示
       %aside.col-lg-3
         %section.user_info

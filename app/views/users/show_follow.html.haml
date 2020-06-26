@@ -9,6 +9,8 @@
           %ul.users.follow
             = render @users
           = will_paginate
+        - else
+          %h3.text-center ユーザーと繋がろう！
       %aside.col-lg-3
         %section.user_info
           = render 'shared/user_info'
