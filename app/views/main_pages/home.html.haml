@@ -1,0 +1,29 @@
+- if user_signed_in?
+  .container
+    .main_view
+      .row
+        .col-lg-9
+          = render 'shared/post_form'
+          = render 'shared/feed'
+        .col-lg-3
+          .main_right
+            .user_top
+              - if !current_user.image.blank?
+                %img{:src => "<haml_loud"}/
+                current_user.image  class="icon_image_prof"&gt;
+              - else
+                = image_tag 'usericon.png', class: 'icon_image_prof'
+              = link_to current_user.name, current_user, class: "user_top_name"
+            .user_top2
+              %span.recommended おすすめ
+              %span.all_user= link_to "すべてを見る", users_path
+            %ul.users
+              = render @users
+- else
+  .center
+    - provide(:title, "ホーム")
+    .top_image
+      = image_tag "cattop.jpg", class: "top_cat"
+      .top_image2
+        = image_tag "logo.png", class: "top_logo"
+        = link_to "新規登録", new_user_registration_path, class: "top_btn"

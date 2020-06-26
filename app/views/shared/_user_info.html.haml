@@ -1,0 +1,27 @@
+/ ログイン後home画面のプロフィール画像、名前、メールアドレス
+.user_top
+  %h1
+    - if !@user.image.blank?
+      %img{:src => "<haml_loud"}/
+      @user.image  class="icon_image_prof"&gt;
+    - else
+      = image_tag 'usericon.png'
+    = @user.name
+%span.profile= @user.profile
+.action_btn
+  / ダイレクトメッセージ
+  - unless @user.id == current_user.id
+    - if @isRoom == true
+      %a.fas.fa-envelope.fa_icon2{:href => "/rooms/#{@roomId}"}
+    - else
+      = form_with model: @room do |f|
+        = fields_for @entry do |e|
+          = e.hidden_field :user_id, value: @user.id
+        = f.button type: "submit", class: "btn_dm" do
+          %i.fas.fa-envelope.fa_icon2
+  / YouTube
+  - unless @user.youtube.blank?
+    = link_to @user.youtube , method: :get do
+      %i.fab.fa-youtube.fa_icon2.youtube_icon
+  / フォローボタン
+  = render 'follow_form' if user_signed_in?

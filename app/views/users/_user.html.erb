@@ -1,9 +1,0 @@
-<li>
-  <% if user.image.blank?%>
-    <%= image_tag 'usericon.png', class: 'icon_image_prof'%>
-  <% else %>
-    <img src=<%= user.image %> class = "icon_image_prof">
-  <% end %>
-
-  <%= link_to user.name, user %>
-</li>

@@ -1,0 +1,49 @@
+.form-wrapper
+  %h1 ユーザー情報設定
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .form-item
+      = f.label "ユーザー名"
+      %br/
+      = f.text_field :name, autofocus: true, autocomplete: "name"
+    .form-item
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .form-item
+      = f.label "プロフィール"
+      %br/
+      = f.text_area :profile, autofocus: true, autocomplete: "profile",class:"edit_textarea"
+    .form-item
+      = f.label :youtube
+      %br/
+      = f.text_area :youtube, autofocus: true, autocomplete: "youtube",class:"edit_textarea"
+    .form-item
+      = f.label "プロフィール画像"
+      %br/
+      = f.file_field :image
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    .form-item
+      = f.label "パスワードを変更"
+      %em
+        (#{@minimum_password_length}文字以上)
+      %br/
+      = f.password_field :password, autocomplete: "new-password"
+      - if @minimum_password_length
+    .form-item
+      = f.label "新しいパスワードを再度入力"
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    .form-item
+      = f.label :current_password
+      %i (変更時現在のパスワードが必要です)
+      %br/
+      = f.password_field :current_password, autocomplete: "current-password"
+    .button-panel
+      = f.submit "保存", class: "button"
+  %br/
+  %br/
+  .form-item
+    %p= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
