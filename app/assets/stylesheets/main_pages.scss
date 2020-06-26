@@ -50,6 +50,11 @@ textarea {
   min-height: 100vh
 }
 
+.notifications{
+  display: flex;
+  justify-content: center;
+}
+
 .center {
   margin-top: -17px;
   background-color: white;

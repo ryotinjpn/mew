@@ -8,6 +8,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました!"
       redirect_to root_url
     else
+      flash[:alert] = "キャプションとファイル(30MB未満)は必須です！ "
       @feed_items = []
       redirect_to root_url
     end

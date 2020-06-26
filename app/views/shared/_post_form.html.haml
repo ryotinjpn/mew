@@ -8,6 +8,7 @@
         #picture_file
           = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,video/*'
   = f.submit "投稿する", class: "btn_post"
+  
 :javascript
   $('#post_picture').bind('change', function () {
     var size_in_megabytes = this.files[0].size / 1024 / 1024;
