@@ -26,6 +26,10 @@ class PostsController < ApplicationController
     flash[:success] = "投稿を削除しました"
     redirect_to request.referrer || root_url
   end
+
+  def search
+    @posts = Post.search(params[:keyword])
+  end
     
   private
   def post_params
