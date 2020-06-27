@@ -39,6 +39,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  private
+  def forbid_guest_user
+    if @user.email == "guest@example.com"
+      flash[:notice] = "ゲストユーザーのため変更できません"
+      redirect_to root_path
+    end
+  end
 
   protected
   def update_resource(resource, params)
@@ -47,13 +54,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [ :agreement, :profile, :sex, :telephone_number])
-  end
-
-  def forbid_guest_user
-    if @user.email == "guest@example.com"
-      flash[:notice] = "ゲストユーザーのため変更できません"
-      redirect_to root_path
-    end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
