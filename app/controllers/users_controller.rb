@@ -48,4 +48,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def search
+    @users = User.search(params[:keyword])
+  end
 end
