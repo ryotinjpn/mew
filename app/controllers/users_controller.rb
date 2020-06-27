@@ -51,5 +51,9 @@ class UsersController < ApplicationController
 
   def search
     @users = User.search(params[:keyword])
+    unless @users.present?
+      flash[:alert] = "一致するユーザーはいません"
+      render 'search'
+    end
   end
 end

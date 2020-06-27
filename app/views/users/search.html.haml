@@ -1,0 +1,10 @@
+.container
+  .main_view
+    %h1 おすすめ
+    .row
+      .all_user2
+        %ul.users2
+          = render 'shared/user_search_form'
+          = render 'shared/flash'
+          - @users.each do |user|
+            = render partial: "user", locals: { user: user }
