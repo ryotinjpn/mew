@@ -1,9 +1,9 @@
-- provide(:title, @title)
 .container
   .main_view
     %h1 おすすめ
     .row
       .all_user2
         %ul.users2
+          = render 'shared/user_search_form'
           = render @users
           = will_paginate
