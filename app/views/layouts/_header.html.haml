@@ -13,8 +13,9 @@
               = link_to main_pages_protection_path , method: :get do
                 %i.fas.fa-cat.fa_icon
             %li
-              = link_to edit_user_registration_path, method: :get do
-                %i.fas.fa-cog.fa_icon
+              - unless current_user.email == "guest@example.com"
+                = link_to edit_user_registration_path, method: :get do
+                  %i.fas.fa-cog.fa_icon
             %li
               = link_to destroy_user_session_path, method: :delete do
                 %i.fas.fa-sign-out-alt.fa_icon

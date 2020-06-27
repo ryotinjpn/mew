@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :forbid_guest_user, {only: [:edit,:update,:destroy]}
 
   # GET /resource/sign_up
   # def new
@@ -46,6 +47,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [ :agreement, :profile, :sex, :telephone_number])
+  end
+
+  def forbid_guest_user
+    if @user.email == "guest@example.com"
+      flash[:notice] = "ゲストユーザーのため変更できません"
+      redirect_to root_path
+    end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
