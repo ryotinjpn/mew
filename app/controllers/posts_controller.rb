@@ -29,6 +29,10 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:keyword])
+    unless @posts.present?
+      flash[:alert] = "一致する投稿はありません"
+      redirect_to root_url
+    end
   end
     
   private
