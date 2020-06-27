@@ -1,0 +1,6 @@
+= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |form|
+  .form-item
+    .search-post
+      = form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input"
+      = form.button type: "submit", class: "search-btn" do
+        %i.fas.fa-search.fa_icon

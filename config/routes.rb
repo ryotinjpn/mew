@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     member do
       get :following, :followers, :likes
     end
+    collection do
+      get 'search'
+    end
   end
   
   resources :posts, only: [:create, :show, :destroy] do
@@ -15,6 +18,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  
   resources :relationships, only: [:create, :destroy]
   resources :like_relationships, only: [:create, :destroy]
 

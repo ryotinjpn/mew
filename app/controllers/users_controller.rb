@@ -48,4 +48,12 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def search
+    @users = User.search(params[:keyword])
+    unless @users.present?
+      flash[:alert] = "一致するユーザーはいません"
+      redirect_to search_users_path
+    end
+  end
 end
