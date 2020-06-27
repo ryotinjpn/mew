@@ -1,0 +1,4 @@
+.container
+  .main_view
+    - @posts.each do |post|
+      = render partial: "post", locals: { post: post }

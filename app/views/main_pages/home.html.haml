@@ -8,6 +8,7 @@
           = render 'shared/feed'
         .col-lg-3
           .main_right
+            = render 'shared/post_search_form'
             .user_top
               - if !current_user.image.blank?
                 %img{:src => "<haml_loud"}/

@@ -1,25 +1,24 @@
 %body
-  %header.navbar-fixed-top.navbar-light.shadow-lg{:style => "background-color: white;"}
-    .shadow-lg
-      .container
-        %nav
-          = link_to image_tag("logo.png", class:"logo_image"), root_path
-          %ul.nav.navbar-nav.navbar-right
-            - if user_signed_in?
-              %li
-                = link_to current_user , method: :get do
-                  %i.fas.fa-user.fa_icon
-              %li
-              %li
-                = link_to main_pages_protection_path , method: :get do
-                  %i.fas.fa-cat.fa_icon
-              %li
-                = link_to edit_user_registration_path, method: :get do
-                  %i.fas.fa-cog.fa_icon
-              %li
-                = link_to destroy_user_session_path, method: :delete do
-                  %i.fas.fa-sign-out-alt.fa_icon
-            - else
-              %li
-                = link_to new_user_session_path, method: :get do
-                  %i.fas.fa-sign-in-alt.fa_icon
+  %header.navbar-fixed-top.navbar-light{style: "background-color: white;"}
+    .icons
+      %nav.icons_bar
+        = link_to image_tag("logo.png", class:"logo_image"), root_path
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li
+              = link_to current_user , method: :get do
+                %i.fas.fa-user.fa_icon
+            %li
+            %li
+              = link_to main_pages_protection_path , method: :get do
+                %i.fas.fa-cat.fa_icon
+            %li
+              = link_to edit_user_registration_path, method: :get do
+                %i.fas.fa-cog.fa_icon
+            %li
+              = link_to destroy_user_session_path, method: :delete do
+                %i.fas.fa-sign-out-alt.fa_icon
+          - else
+            %li
+              = link_to new_user_session_path, method: :get do
+                %i.fas.fa-sign-in-alt.fa_icon

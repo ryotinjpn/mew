@@ -10,6 +10,11 @@ class Post < ApplicationRecord
   validates :picture, presence: true
   validate  :picture_size 
 
+  def self.search(search)
+    return Post.all unless search
+    Post.where('content LIKE(?)', "%#{search}%")
+  end
+
   private
   # アップロードされた画像のサイズをバリデーションする
   def picture_size
