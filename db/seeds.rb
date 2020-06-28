@@ -1,5 +1,3 @@
-require 'faker'
-
 User.create!( 
   name:  "ゲスト",
   email: "guest@example.com",
@@ -9,7 +7,7 @@ User.create!(
   youtube: "https://www.youtube.com/")
 
 29.times do |n|
-  name = ""Faker::Name.name""
+  name = Faker::Name.name
   email = "#{n+1}@example.com"
   password = "password"
   profile = "#{name}です！"
