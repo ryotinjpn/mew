@@ -39,7 +39,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do
@@ -87,3 +86,5 @@ gem 'mini_magick'
 gem 'jquery-rails'
 
 gem 'font-awesome-sass'
+
+gem 'faker'

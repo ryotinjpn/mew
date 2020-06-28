@@ -9,10 +9,9 @@ User.create!(
 99.times do |n|
   name = Faker::Name.name
   email = Faker::Internet.email
-  email = "example-#{n+1}@co.jp"
   password = "password"
-  profile = Faker::Lorem.sentence 
-  youtube = Faker::Internet.url
+  profile = "#{name}です！"
+  youtube = "https://www.youtube.com/"
   User.create!(name:  name,
                email: email,
                password:              password,
