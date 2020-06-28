@@ -6,9 +6,9 @@ User.create!(
   profile: "ゲストアカウントです！",
   youtube: "https://www.youtube.com/")
 
-99.times do |n|
+29.times do |n|
   name = Faker::Name.name
-  email = Faker::Internet.email
+  email = "#{n+1}@example.com"
   password = "password"
   profile = "#{name}です！"
   youtube = "https://www.youtube.com/"
