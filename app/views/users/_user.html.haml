@@ -3,7 +3,6 @@
     - if user.image.blank?
       = image_tag 'usericon.png', class: 'icon_image_prof'
     - else
-      %img{:src => "<haml_loud"}/
-      user.image  class = "icon_image_prof"&gt;
+      %img{src: user.image, class: 'icon_image_prof'}
     = link_to user.name, user
 
