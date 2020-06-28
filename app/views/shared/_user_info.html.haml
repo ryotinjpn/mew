@@ -2,10 +2,9 @@
 .user_top
   %h1
     - if !@user.image.blank?
-      %img{:src => "<haml_loud"}/
-      @user.image  class="icon_image_prof"&gt;
+      %img{src: @user.image, class: 'icon_image_prof'}
     - else
-      = image_tag 'usericon.png'
+      = image_tag 'usericon.png', class: 'icon_image_prof'
     = @user.name
 %span.profile= @user.profile
 .action_btn

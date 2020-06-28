@@ -2,8 +2,7 @@
 %li{:id => "post-#{post.id}"}
   .user_timeline
     - if !post.user.image.blank?
-      %img{:src => "<haml_loud"}/
-      post.user.image  class = "icon_image_feed"&gt;
+      %img{src: post.user.image, class: 'icon_image_feed'}
     - else
       = image_tag 'usericon.png', class: 'icon_image_feed'
     %span.user_name= link_to post.user.name, post.user
@@ -12,8 +11,7 @@
       - if post.picture.file.content_type.include?('image/')
         = link_to image_tag(post.picture.url(:thumb), width: "100%", height: "100%"),post if post.picture?
       - else
-        = video_tag post.picture.url, width: "100%", height: "100%", |
-          controls: true, autobuffer: true                           |
+        = video_tag post.picture.url, width: "100%", height: "100%", controls: true, autobuffer: true                           |
     %span{:id => "like_form_#{post.id}"}
       - if post.liked_by.include?(current_user)
         = render "posts/unlike", post: post
