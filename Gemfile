@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -60,6 +61,7 @@ end
 
 group :production do
   gem 'unicorn', '5.4.1'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -87,4 +89,3 @@ gem 'jquery-rails'
 
 gem 'font-awesome-sass'
 
-gem 'faker'
