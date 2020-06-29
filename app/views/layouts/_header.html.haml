@@ -9,9 +9,9 @@
               = link_to current_user , method: :get do
                 %i.fas.fa-user.fa_icon
             %li
-            %li
-              = link_to main_pages_protection_path , method: :get do
-                %i.fas.fa-cat.fa_icon
+            //%li
+            //  = link_to main_pages_protection_path , method: :get do
+            //    %i.fas.fa-cat.fa_icon
             %li
               - unless current_user.email == "guest@example.com"
                 = link_to edit_user_registration_path, method: :get do
