@@ -20,8 +20,7 @@
             - @messages.each do |message|
               %p
                 - if !message.user.image.blank?
-                  %img{:src => "<haml_loud"}/
-                  message.user.image  class="icon_image_feed"&gt;
+                  %img{src: message.user.image, class: 'icon_image_feed'}
                 - else
                   = image_tag 'usericon.png', class: 'icon_image_feed'
                 = link_to message.user.name, "/users/#{message.user_id}"
