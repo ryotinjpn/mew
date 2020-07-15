@@ -1,0 +1,21 @@
+#address_field{
+ display: flex;
+ justify-content: center;
+ margin-top: 15px;
+ margin-bottom: 20px;
+}
+
+#address{
+  height: 30px;
+  margin-right: 5px;
+  border: 3px solid #764B0A;
+  color: #764B0A;
+}
+
+.address_btn{
+  color: #764B0A;
+  background-color: white;
+  border: 3px solid #764B0A;
+  width: 50px;
+  height: 30px;
+}

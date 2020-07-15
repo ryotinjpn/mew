@@ -1,289 +1,1064 @@
-<h2>保健所</h2>
+<div class='container'>
+  <div class="main_view">
+    <h3 class="text-center">全国の動物愛護センター</h3>
+    <div id="address_field">
+      <select id="address">
+        <option value="東京駅">選択して下さい</option>
+        <option value="北海道">北海道</option>
+        <option value="青森県">青森県</option>
+        <option value="岩手県">岩手県</option>
+        <option value="宮城県">宮城県</option>
+        <option value="秋田県">秋田県</option>
+        <option value="山形県">山形県</option>
+        <option value="福島県">福島県</option>
+        <option value="茨城県">茨城県</option>
+        <option value="栃木県">栃木県</option>
+        <option value="群馬県">群馬県</option>
+        <option value="埼玉県">埼玉県</option>
+        <option value="千葉県">千葉県</option>
+        <option value="東京都">東京都</option>
+        <option value="神奈川県">神奈川県</option>
+        <option value="新潟県">新潟県</option>
+        <option value="富山県">富山県</option>
+        <option value="石川県">石川県</option>
+        <option value="福井県">福井県</option>
+        <option value="山梨県">山梨県</option>
+        <option value="長野県">長野県</option>
+        <option value="岐阜県">岐阜県</option>
+        <option value="静岡県">静岡県</option>
+        <option value="愛知県">愛知県</option>
+        <option value="三重県">三重県</option>
+        <option value="滋賀県">滋賀県</option>
+        <option value="京都府">京都府</option>
+        <option value="大阪府">大阪府</option>
+        <option value="兵庫県">兵庫県</option>
+        <option value="奈良県">奈良県</option>
+        <option value="和歌山県">和歌山県</option>
+        <option value="鳥取県">鳥取県</option>
+        <option value="島根県">島根県</option>
+        <option value="岡山県">岡山県</option>
+        <option value="広島県">広島県</option>
+        <option value="山口県">山口県</option>
+        <option value="徳島県">徳島県</option>
+        <option value="香川県">香川県</option>
+        <option value="愛媛県">愛媛県</option>
+        <option value="高知県">高知県</option>
+        <option value="福岡県">福岡県</option>
+        <option value="佐賀県">佐賀県</option>
+        <option value="長崎県">長崎県</option>
+        <option value="熊本県">愛媛県</option>
+        <option value="大分県">高知県</option>
+        <option value="宮崎県">宮崎県</option>
+        <option value="鹿児島県">鹿児島県</option>
+        <option value="沖縄県">沖縄県</option>
+      </select>
+      <input class="address_btn" type="button" value="検索" onclick="codeAddress()">
+    </div>
 
-<select id="address">
-  <option value="東京駅">選択して下さい</option>
-  <option value="北海道">北海道</option>
-  <option value="青森県">青森県</option>
-  <option value="岩手県">岩手県</option>
-  <option value="宮城県">宮城県</option>
-  <option value="秋田県">秋田県</option>
-  <option value="山形県">山形県</option>
-  <option value="福島県">福島県</option>
-  <option value="茨城県">茨城県</option>
-  <option value="栃木県">栃木県</option>
-  <option value="群馬県">群馬県</option>
-  <option value="埼玉県">埼玉県</option>
-  <option value="千葉県">千葉県</option>
-  <option value="東京都">東京都</option>
-  <option value="神奈川県">神奈川県</option>
-  <option value="新潟県">新潟県</option>
-  <option value="富山県">富山県</option>
-  <option value="石川県">石川県</option>
-  <option value="福井県">福井県</option>
-  <option value="山梨県">山梨県</option>
-  <option value="長野県">長野県</option>
-  <option value="岐阜県">岐阜県</option>
-  <option value="静岡県">静岡県</option>
-  <option value="愛知県">愛知県</option>
-  <option value="三重県">三重県</option>
-  <option value="滋賀県">滋賀県</option>
-  <option value="京都府">京都府</option>
-  <option value="大阪府">大阪府</option>
-  <option value="兵庫県">兵庫県</option>
-  <option value="奈良県">奈良県</option>
-  <option value="和歌山県">和歌山県</option>
-  <option value="鳥取県">鳥取県</option>
-  <option value="島根県">島根県</option>
-  <option value="岡山県">岡山県</option>
-  <option value="広島県">広島県</option>
-  <option value="山口県">山口県</option>
-  <option value="徳島県">徳島県</option>
-  <option value="香川県">香川県</option>
-  <option value="愛媛県">愛媛県</option>
-  <option value="高知県">高知県</option>
-  <option value="福岡県">福岡県</option>
-  <option value="佐賀県">佐賀県</option>
-  <option value="長崎県">長崎県</option>
-  <option value="熊本県">愛媛県</option>
-  <option value="大分県">高知県</option>
-  <option value="宮崎県">宮崎県</option>
-  <option value="鹿児島県">鹿児島県</option>
-  <option value="沖縄県">沖縄県</option>
-</select>
-<input type="button" value="検索" onclick="codeAddress()">
-
-<script>
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-    provider: {},
-    internal: {
-      id: 'map'
-    }
-  }, function () {
-    markers = handler.addMarkers(<%= ::Temple::Utils.escape_html_safe((raw @hash.to_json)) %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-</script>
-
-<div id='map'></div>
-<style>
-#map {
-  height: 600px;
-  width: 1200px;
-}
-</style>
-
-<script>
-let map
-let geocoder
-
-const display = document.getElementById('display')
-
-var marker = [];
-var infoWindow = [];
-var markerData = [
-  {name: '東京駅', lat: 35.681236, lng: 139.767125, link: 'https://shuyojoho.metro.tokyo.lg.jp/'}, 
-  {name: '札幌市', lat: 43.085362, lng: 141.3267162, link: 'http://www.city.sapporo.jp/inuneko/syuuyou_doubutsu/maigoinuneko.html'}, 
-  {name: '旭川市', lat: 43.771128, lng: 142.3645289, link: 'http://www1.city.asahikawa.hokkaido.jp/files/eiseikensa/Animaal_HP/index.html'}, 
-  {name: '函館市', lat: 41.7687017, lng: 140.7245605, link: 'http://www.city.hakodate.hokkaido.jp/docs/2014070200084/'}, 
-  {name: '小樽市', lat: 43.1936429, lng: 140.9912196, link: 'http://www.city.otaru.lg.jp/simin/anzen/doubutu/dog.html'}, 
-  {name: '青森市', lat: 40.8220849, lng: 140.7782359, link: 'http://www.city.aomori.aomori.jp/hoken-yobou/fukushi-kenkou/kenkou-iryou/inu-neko-doubutsu/wannyansatooya.html'}, 
-  {name: '八戸市', lat: 40.5089376, lng: 141.4385011, link: 'https://www.city.hachinohe.aomori.jp/kurashi_tetsuzuki/gomi_kankyo_pet/dobutsu_pet/7863.html'}, 
-  {name: '岩手県県央保健所', lat: 39.7027112, lng: 141.1518524, link: 'https://www.pref.iwate.jp/morioka/hoken/doubutsu/1012494.html'}, 
-  {name: '中部保健所', lat: 39.3900124, lng: 141.1137109, link: 'https://www.pref.iwate.jp/kennan/hana_hoken/1013542/1013544.html'}, 
-  {name: '奥州保健所', lat: 39.7027112, lng: 141.1518524, link: 'https://www.pref.iwate.jp/kennan/hoken/doubutsu/1013511.html'}, 
-  {name: '一関保健所', lat: 38.9358415, lng: 141.1250304, link: 'https://www.pref.iwate.jp/kennan/ichi_hoken/doubutsu/1013648.html'}, 
-  {name: '大船渡保健所', lat: 39.0952669, lng: 141.7024034, link: 'https://www.pref.iwate.jp/engan/ofuna_hoken/1014212/1014213.html'},
-  {name: '宮古保健所', lat: 39.6476006, lng: 141.9432425, link: 'https://www.pref.iwate.jp/engan/miya_hoken/hogodoubutsu/1014161.html'},
-  {name: '久慈保健所', lat: 40.1921043, lng: 141.7613999, link: 'https://www.pref.iwate.jp/kenpoku/hoken/1014738.html'}, 
-  {name: '二戸保健所', lat: 40.2688046, lng: 141.2937091, link: 'https://www.pref.iwate.jp/kenpoku/nino_hoken/1014824.html'},
-  {name: '盛岡市保健所', lat: 39.7020917, lng: 141.1522729, link: 'http://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/index.html'}, 
-  {name: '仙南保健所', lat: 38.0471336, lng: 140.7267292, link: 'https://www.pref.miyagi.jp/soshiki/sn-hohuku/hogodoubutu.html'}, 
-  {name: '塩釜保健所', lat: 38.3240958, lng: 141.0266619, link: 'https://www.pref.miyagi.jp/soshiki/sd-hohuku/hogoken.html'},
-  {name: '塩釜保健所岩沼支所', lat: 38.1111051, lng: 140.8653491, link: 'https://www.pref.miyagi.jp/soshiki/sh-helth-i/hogokeniwanuma.html'}, 
-  {name: '塩釜保健所黒川支所', lat: 38.4025132, lng: 140.885183, link: 'https://www.pref.miyagi.jp/soshiki/sh-helth-k/hogodoubutu.html'}, 
-  {name: '大崎保健所', lat: 38.5665918, lng: 140.9723537, link: 'https://www.pref.miyagi.jp/soshiki/nh-hwfz/oosakihogoken.html'},
-  {name: '栗原保健所', lat: 38.7385708, lng: 141.0165236, link: 'https://www.pref.miyagi.jp/site/kouiki-kurihara/hogoinu.html'}, 
-  {name: '登米保健所', lat: 38.6837989, lng: 141.196039, link: 'https://www.pref.miyagi.jp/site/kouiki-tome/inuneko3.html'}, 
-  {name: '石巻保健所', lat: 38.4418289, lng: 141.2556261, link: 'https://www.pref.miyagi.jp/soshiki/et-hc/jueki-hogoken.html'},
-  {name: '仙台市', lat: 38.2694063, lng: 140.9541518, link: 'http://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/hogoneko.html'}, 
-  {name: '秋田市', lat: 39.6264612, lng: 140.1809717, link: 'https://wannyapia.akita.jp/pages/protective-cats'}, 
-  {name: '動物愛護センター', lat:38.3089815 , lng: 140.2940635, link: 'https://www.city.yamagata-yamagata.lg.jp/kakuka/kenkoiryo/doubutsuaigo/sogo/inuneko/inu-neko-jouto.html'},
-  {name: '村山保健所', lat: 38.2481794, lng: 140.3169869, link: 'http://www.pref.yamagata.jp/ou/sogoshicho/murayama/301025/murahoseikatsu_kainusisagasi2016.html'},
-  {name: '最上保健所', lat: 38.7527646, lng: 140.3079263, link: 'http://www.pref.yamagata.jp/ou/sogoshicho/mogami/314023/mogami_DandC_densi_keijiban.html'}, 
-  {name: '置賜保健所', lat: 37.9218555, lng: 140.1147407, link: 'http://www.pref.yamagata.jp/ou/sogoshicho/okitama/325025/oitamaseikatsu_doubutsu/hp_kainushisagashi.html'},
-  {name: '庄内保健所', lat: 38.7993622, lng: 139.8472063, link: 'http://www.pref.yamagata.jp/ou/sogoshicho/shonai/337023/satooya.html'}, 
-  {name: '福島県動物愛護センター', lat: 37.42208, lng: 140.4435375, link: 'https://www.city.fukushima.fukushima.jp/hoken-doubutsu-aigo/kurashi/pet/82.html'}, 
-  {name: '郡山市保健所', lat: 37.4054355, lng: 140.3571275, link: 'https://www.city.koriyama.lg.jp/soshikinogoannai/hokenfukushibu/hokenjoseikatsueiseika/gomu/1/2/3759.html'},
-  {name: 'いわき市保健所', lat: 37.0509582, lng: 140.8846186, link: 'http://www.city.iwaki.lg.jp/www/genre/1000100000053/index.html'},
-  {name: '茨城県', lat: 36.408589, lng: 140.2539308, link: 'https://www.pref.ibaraki.jp/hokenfukushi/doshise/hogo/kouji.html'},
-  {name: '栃木県動物愛護指導センター', lat: 36.5099044, lng: 139.865171, link: 'https://tochigi-douai.net/syuuyou.html'}, 
-  {name: '宇都宮市', lat: 36.5774836, lng: 139.8932917, link: 'https://www.city.utsunomiya.tochigi.jp/kurashi/eisei/pet/1005584.html'},
-  {name: '群馬県', lat: 36.3900508, lng: 139.0585179, link: 'https://www.pref.gunma.jp/cate_list/ct00000674.html'},
-  {name: '前橋市', lat: 36.3894301, lng: 139.0612549, link: 'https://www.city.maebashi.gunma.jp/soshiki/kenko/eiseikensa/gyomu/1/1/1/index.html'},
-  {name: '高崎市', lat: 36.3287289, lng: 138.9666765, link: 'http://www.city.takasaki.gunma.jp/docs/2014040200021/'},
-  {name: 'さいたま市', lat: 35.8583701, lng: 139.6031748, link: 'https://www.city.saitama.jp/001/008/001/p033069.html'},
-  {name: '川越市保健所', lat: 35.9265505, lng: 139.4567489, link: 'https://www.city.kawagoe.saitama.jp/kurashi/pet/dobutsuaigo_kainushi/hogoshuyodobutsu.html'},
-  {name: '越谷市保健所', lat: 35.8910081, lng: 139.78823, link: 'http://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/hogo/index.html'},
-  {name: '川口市保健所', lat: 35.8075941, lng: 139.7219431, link: 'https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/lost/index.html'},
-  {name: '千葉県動物愛護センター', lat: 35.4739759, lng: 139.7847076, link: 'http://www.pref.chiba.lg.jp/aigo/pet/inu-neko/shuuyou/index.html'},
-  {name: '千葉市', lat: 35.6618535, lng: 140.0999568, link: 'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/escape.html'},
-  {name: '動物愛護指導センター', lat: 35.6790334, lng: 139.9613745, link: 'http://www.city.funabashi.lg.jp/kurashi/doubutsu/003/p013242.html'},
-  {name: '柏市保健所', lat: 35.8275994, lng: 140.0066867, link: 'http://www.city.kashiwa.lg.jp/soshiki/061710/p002405.html'},
-  {name: '動物愛護相談センター', lat: 35.6598024, lng: 139.6144419, link: 'https://wannyan.metro.tokyo.lg.jp/'},
-  {name: '多摩支所', lat: 35.6671239, lng: 139.4283905, link: 'https://wannyan.metro.tokyo.lg.jp/'},
-  {name: '八王子市保健所', lat: 35.6572777, lng: 139.3394489, link: 'http://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p002911.html'},
-  {name: '町田市', lat: 35.5466472, lng: 139.4364507, link: 'https://www.city.machida.tokyo.jp/iryo/hokenjo/pet/mayoi/index.html'},
-  {name: '横浜市', lat: 35.4958629, lng: 139.5679407, link: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/maigo/20121004094818.html'},
-  {name: '川崎市', lat: 35.5561929, lng: 139.6719858, link: 'http://www.city.kawasaki.jp/shisetsu/category/39-2-7-1-0-0-0-0-0-0.html'},
-  {name: '相模原市', lat: 35.5698425, lng: 139.3718959, link: 'https://www.city.sagamihara.kanagawa.jp/kurashi/kenko/pet/1007470.html'},
-  {name: '横須賀市', lat: 35.2993961, lng: 139.6310855, link: 'http://www.yokosuka-doubutu.com/'},
-  {name: '藤沢市', lat: 35.3313231, lng: 139.4863661, link: 'http://www.city.fujisawa.kanagawa.jp/seiei/kurashi/dobutsu/syuyoken.html'},
-  {name: '茅ヶ崎市・寒川町', lat: 35.3340734, lng: 139.3978699, link: 'https://www.city.chigasaki.kanagawa.jp/kankyo/pet/1024474.html'},
-  {name: '新潟県動物愛護センター', lat: 37.4373229, lng: 138.7625384, link: 'pref.niigata.lg.jp/sec/seikatueisei/1333314133188.html'},
-  {name: '下越動物保護管理センター', lat: 37.9580509, lng: 139.2936388, link: 'https://www.pref.niigata.lg.jp/sec/shibata_kenkou/1206033358899.html'},
-  {name: '上越動物保護管理センター', lat: 37.1379394, lng: 138.2001052, link: 'https://www.pref.niigata.lg.jp/sec/jouetsu_kenkou/1205169321899.html'},
-  {name: '富山市保健所', lat: 36.6454905, lng: 137.2032883, link: 'https://www.city.toyama.toyama.jp/fukushihokenbu/hokensho/seikatsueiseika/kanshi/inu/doubutunohogohennkann_2_4.html'},
-  {name: '金沢市', lat: 36.6486459, lng: 136.688396, link: 'https://www4.city.kanazawa.lg.jp/23036/pet/pet.html'},
-  {name: '南加賀保健福祉センター', lat: 36.4110116, lng: 136.4627456, link: 'https://www.pref.ishikawa.lg.jp/minamikaga/toppage/seikatu/mayoineko2.html'},
-  {name: '石川中央保健福祉センター', lat: 36.5193473, lng: 136.5617706, link: 'https://www.pref.ishikawa.lg.jp/hc/ishikawa/neko/syuyouneko.html'},
-  {name: '能登中部保健福祉センター', lat: 37.0402537, lng: 136.9693601, link: 'https://www.pref.ishikawa.lg.jp/nanaohc/seikatu/mayoineko.html'},
-  {name: '能登北部保健福祉センター', lat: 37.392037, lng: 136.894435, link: 'https://www.pref.ishikawa.lg.jp/yakuji/doubutsu/notohokubuneko.html'},
-  {name: '動物愛護センター', lat: 35.975805, lng: 136.2010591, link: 'https://www.pref.fukui.lg.jp/doc/doukansi/index.html'},
-  {name: '動物愛護センター嶺南支所', lat: 35.6468665, lng: 136.0663108, link: 'https://www.pref.fukui.lg.jp/doc/doukansi/index.html'},
-  {name: '山梨県福祉保健部動物愛護指導センター', lat: 35.5921155, lng: 138.5547367, link: 'https://www.pref.yamanashi.jp/doubutsu/maigo.html'},
-  {name: '山梨県福祉保健部中北保健福祉事務所（中北保健所）', lat: 35.7007774, lng: 138.4564661, link: 'https://www.pref.yamanashi.jp/ch-hokenf/maigo.html'},
-  {name: '山梨県福祉保健部峡東保健福祉事務所（峡東保健所）', lat: 35.7037413, lng: 138.7105959, link: 'https://www.pref.yamanashi.jp/kt-hokenf/inuneko_maigo.html'},
-  {name: '山梨県福祉保健部峡南保健福祉事務所（峡南保健所）', lat: 35.5467195, lng: 138.4607987, link: 'https://www.pref.yamanashi.jp/kn-hokenf/inunekomaigo.html'},
-  {name: '山梨県福祉保健部富士・東部保健福祉事務所（富士・東部保健所）', lat: 35.480566, lng: 138.7988498, link: 'https://www.pref.yamanashi.jp/ft-hokenf/maigo.html'},
-  {name: '健康支援センター', lat: 35.6556191, lng: 138.5653045, link: 'https://www.city.kofu.yamanashi.jp/hokenjo/2019mayoiinuneko.html'},
-  {name: '佐久保健福祉事務所', lat: 36.2295594, lng: 138.4593689, link: 'https://www.pref.nagano.lg.jp/sakuho/dobutsu/dobutsu/kainushi.html#nekonoitirann'},
-  {name: '上田保健福祉事務所', lat: 36.4006901, lng: 138.2581944, link: 'https://www.pref.nagano.lg.jp/uedaho/dobutsu/boshu.html'},
-  {name: '諏訪保健福祉事務所', lat: 36.0339273, lng: 138.10523, link: 'https://www.pref.nagano.lg.jp/suwaho/dobutsu/inuneko/joto.html'},
-  {name: '伊那保健福祉事務所', lat: 35.8401237, lng: 137.9555996, link: 'https://www.pref.nagano.lg.jp/inaho/dobutsu/inuneko/joto-neko.html'},
-  {name: '飯田保健福祉事務所', lat: 35.5137827, lng: 137.8272239, link: 'https://www.pref.nagano.lg.jp/iidaho/dobutsu/inuneko/kaishu.html'},
-  {name: '木曽保健福祉事務所', lat: 35.8391029, lng: 137.6858046, link: 'https://www.pref.nagano.lg.jp/kisoho/dobutsu/joutotest.html'},
-  {name: '松本保健福祉事務所', lat: 36.2348914, lng: 137.9413378, link: 'https://www.pref.nagano.lg.jp/matsuho/dobutsu/neko-joto.html'},
-  {name: '大町保健福祉事務所', lat: 36.507866,  lng: 137.8599742, link: 'https://www.pref.nagano.lg.jp/omachiho/dobutsu/information/joto.html'},
-  {name: '長野保健福祉事務所', lat: 36.6491863, lng: 138.177728, link: 'https://www.pref.nagano.lg.jp/nagaho/dobutsu/joto.html'},
-  {name: '動物愛護センター', lat: 36.6268788, lng: 138.1901488, link: 'https://www.city.nagano.nagano.jp/site/naganoshiaigo/'},
-  {name: '北信保健福祉事務所', lat: 36.8363347, lng: 138.3568772, link: 'https://www.pref.nagano.lg.jp/hokuho/dobutsu/information/joto.html'},
-  {name: '岐阜保健所', lat: 35.4074578, lng: 136.8422924, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22701/gifu-doubutu-joho.html'},
-  {name: '本巣・山県センター', lat: 35.3918347, lng: 136.7130607, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22701/motoyama-dobutsu-joho.html'},
-  {name: '西濃保健所', lat: 35.3559584, lng: 136.6310465, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22703/seinou-dobutsu-joho.html'},
-  {name: '揖斐センター', lat: 35.4908594, lng: 136.5658028, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22703/ibi-dobutsu-joho.html'},
-  {name: '関保健所', lat: 35.5305952, lng: 136.8981045, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22705/joto-inuneko-joho/seki-maigo-joho.html'},
-  {name: '郡上センター', lat: 35.7624898, lng: 136.9477715, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22705/joto-inuneko-joho/gujo-maigo-johou.html'},
-  {name: '可茂保健所', lat: 35.4395034, lng: 137.0233131, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22706/doubutu-joho.html'},
-  {name: '東濃保健所', lat: 35.3450852, lng: 137.1247762, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22708/tono-hokenjo-dobutsu-joho.html'},
-  {name: '恵那保健所', lat: 35.4498787, lng: 137.4308311, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22709/ena-dobutsu-joho.html'},
-  {name: '飛騨保健所', lat: 36.1446462, lng: 137.2387781, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22710/hida-hc-doubutu.html'},
-  {name: '下呂センター', lat: 35.8841938, lng: 137.2052489, link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22710/gerosentadobutujoho.html'},
-  {name: '岐阜市', lat: 35.4231447, lng: 136.7584151, link: 'https://www.city.gifu.lg.jp/10833.htm'},
-  {name: '静岡県動物管理指導センター', lat: 34.7812122, lng: 137.679601, link: 'https://www.pref.shizuoka.jp/kousei/ko-900/yuzurukai.html'},
-  {name: '動物愛護館', lat: 34.9803719, lng: 138.319855, link: 'https://www.city.shizuoka.lg.jp/000_006621.html'},
-  {name: '浜松市動物愛護教育センター', lat: 34.7646387, lng: 137.6273188, link: 'https://www.hama-aikyou.jp/'},
-  {name: '動物愛護センター ', lat: 35.0756988, lng: 137.2170136, link: 'https://www.pref.aichi.jp/soshiki/doukan-c/'},
-  {name: '動物愛護センター', lat: 35.1814392, lng: 136.9038841, link: 'http://www.city.nagoya.jp/kenkofukushi/page/0000020112.html'},
-  {name: '豊橋市保健所', lat: 34.733274, lng: 137.3688185, link: 'http://www.city.toyohashi.lg.jp/6441.htm'},
-  {name: '岡崎市動物総合センター', lat: 34.9542343, lng: 137.1920584, link: 'https://www.city.okazaki.lg.jp/1100/1107/1149/p008181.html'},
-  {name: '三重県動物愛護推進センター', lat: 34.6918455, lng: 136.4261813, link: 'http://www.pref.mie.lg.jp/ASMILE/70463044506_00002.htm'},
-  {name: '滋賀県動物保護管理センター', lat: 35.0065891, lng: 136.1364916, link: 'http://www.sapca.jp/lost'},
-  {name: '京都動物愛護センター', lat: 34.9710356, lng: 135.7484541, link: 'http://kyoto-ani-love.com/recruit-animal/cat/'},
-  {name: '大阪市動物管理センター', lat: 34.6201348, lng: 135.4632922, link: 'https://www.city.osaka.lg.jp/kenko/page/0000003676.html#work'},
-  {name: '堺市動物指導センター', lat: 34.5797142, lng: 135.4941843, link: 'http://www.city.sakai.lg.jp/kurashi/dobutsu/shidocenter/shidocenter.html'},
-  {name: '動物愛護管理センター', lat: 34.6870497, lng: 135.51843, link: 'http://www.pref.osaka.lg.jp/doaicenter/doaicenter/jyoutoneko.html'},
-  {name: 'アニマルハーモニー大阪', lat: 34.5313638, lng: 135.6036556, link: 'https://animal-osaka.com/'},
-  {name: '東大阪市動物指導センター', lat: 34.6794894, lng: 135.598698, link: 'http://www.city.higashiosaka.lg.jp/0000011324.html'},
-  {name: '寝屋川市保健所', lat: 34.7665585, lng: 135.6196011, link: 'https://www.city.neyagawa.osaka.jp/organization_list/kenkou/hokeneisei/doubutu/inuneko_kankei/aigodoubutu_jouto/1555993190376.html'},
-  {name: '兵庫県動物愛護センター', lat: 34.7736859, lng: 135.3734803, link: 'http://www.hyogo-douai.sakura.ne.jp/jouto.html'},
-  {name: '神戸市', lat: 34.6902436, lng: 135.1932742, link: 'https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/index.html'},
-  {name: '姫路市動物管理センター', lat: 34.8368887, lng: 134.7138679, link: 'https://www.city.himeji.lg.jp/bousai/0000001495.html'},
-  {name: '西宮市動物管理センター', lat: 34.6915579, lng: 135.35927, link: 'https://www.nishi.or.jp/kenko/hokenjojoho/pet/dobutsujodo.html'},
-  {name: 'あかし動物センター', lat: 34.7082344, lng: 134.9519193, link: 'https://www.city.akashi.lg.jp/kankyou/dobutsu/index.html'},
-  {name: '中和保健所動物愛護センター', lat: 34.4883776, lng: 135.9320507, link: 'http://www.pref.nara.jp/dd.aspx?menuid=3371'},
-  {name: '奈良市', lat: 34.679193, lng:135.8151617, link: 'https://www.city.nara.lg.jp/soshiki/97/10799.html'},
-  {name: '和歌山県動物愛護センタ－', lat: 34.1825843, lng: 135.3454363, link: 'https://www.pref.wakayama.lg.jp/prefg/031601/d00153722.html'},
-  {name: '動物愛護管理センター', lat: 34.247795, lng: 135.1358875, link: 'https://www.facebook.com/wakayamacity.seikatsuhoken'},
-  {name: '鳥取県保健所', lat: 35.5034633, lng: 134.2360643, link: 'https://www.pref.tottori.lg.jp/255878.htm'},
-  {name: '鳥取市保健所', lat: 35.4944028, lng: 134.2200125, link: 'https://www.city.tottori.lg.jp/www/contents/1523601299297/index.html'},
-  {name: '松江保健所', lat: 35.4724566, lng: 133.048287, link: 'https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/jyoto/'},
-  {name: '岡山県動物愛護センター', lat: 34.8079053, lng: 133.9700208, link: 'https://www.pref.okayama.jp/page/353032.html'},
-  {name: '岡山市', lat: 34.6544585, lng: 133.9164212, link: 'https://www.city.okayama.jp/kurashi/0000016469.html'},
-  {name: '倉敷市保健所', lat: 34.5723672, lng: 133.7628485, link: 'https://www.city.kurashiki.okayama.jp/15361.htm'},
-  {name: '動物愛護センター', lat: 34.3867629, lng: 132.9352601, link: 'https://www.pref.hiroshima.lg.jp/site/apc/jouto-rebreed-cat-list.html'},
-  {name: '動物愛護センター', lat: 34.5285002, lng: 133.3374452, link: 'http://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/40037.html'},
-  {name: '呉市動物愛護センター', lat: 34.298439, lng: 132.651541, link: 'https://www.city.kure.lg.jp/soshiki/127/jouto.html'},
-  {name: '山口県動物愛護センター', lat: 34.108248, lng: 131.429773, link: 'https://www.doubutuaigo.pref.yamaguchi.lg.jp/satooya02/cat_list001.html'},
-  {name: '下関市', lat: 33.9578096, lng: 130.9393, link: 'http://www.city.shimonoseki.lg.jp/www/contents/1568088217012/index.html'},
-  {name: '徳島県動物愛護管理センター', lat: 34.050281, lng: 134.417844, link: 'https://douai-tokushima.com/'},
-  {name: 'しっぽの森', lat: 34.2431216, lng: 134.1016089, link: 'https://www.pref.kagawa.lg.jp/content/etc/subsite/sanukidouaicenter/jyouto/s04u6e190311095146.shtml'},
-  {name: '愛媛県動物愛護センター', lat: 33.9095941, lng: 132.872633, link: 'https://www.pref.ehime.jp/h25123/4415/aigo-top.html'},
-  {name: '松山市役所', lat: 33.8516121, lng: 132.7552786, link: 'http://www.city.matsuyama.ehime.jp/kurashi/kurashi/pet/mayoi/mayoiinuneko.html'},
-  {name: '中央小動物管理センター', lat: 33.5335911, lng: 133.5588972, link: 'http://tanabe-animal.jp/publics/index/121/'},
-  {name: '福岡県動物愛護センター', lat: 33.697145, lng: 130.4751756, link: 'http://www.zaidan-fukuoka-douai.or.jp/jyouto.php?syubetsu=2'},
-  {name: '北九州市動物愛護センター', lat: 33.9054451, lng: 130.8495522, link: 'https://www.city.kitakyushu.lg.jp/ho-huku/file_0981.html'},
-  {name: '東部動物愛護管理センター', lat: 33.647419, lng: 130.485547, link: 'http://wannyan.city.fukuoka.lg.jp/'},
-  {name: '久留米市動物管理センター', lat: 33.3293925, lng: 130.5121706, link: 'http://www.city.kurume.fukuoka.jp/1050kurashi/2060hokeneisei/3115doubutsuaigo/2010-0707-1600-465.html'},
-  {name: '佐賀県犬猫譲渡センター いっしょけんね', lat: 33.2014648, lng: 130.0354571, link: 'https://www.pref.saga.lg.jp/kiji00315040/index.html'},
-  {name: 'ながさき犬猫ネット', lat: 32.7553425, lng: 129.864015, link: 'http://animal-net.pref.nagasaki.jp/'},
-  {name: '熊本県動物愛護センター', lat: 32.7898074, lng: 130.7393798, link: 'http://www.kumamoto-doubutuaigo.jp/index.php'},
-  {name: '熊本市動物愛護センター', lat: 32.8287607, lng: 130.7846542, link: 'http://doubutsuaigo.hinokuni-net.jp/index.php'},
-  {name: 'おおいた動物愛護センター', lat: 33.1721627, lng: 131.5372828, link: 'https://oita-aigo.com/transfer'},
-  {name: '宮崎動物愛護センター', lat: 31.836084, lng: 131.403206, link: 'http://dog.pref.miyazaki.lg.jp/'},
-  {name: '鹿児島県動物愛護センター', lat: 31.74105, lng: 130.7083752, link: 'http://dogcat.pref.kagoshima.jp/Search/Jouto_index'},
-  {name: '沖縄県動物愛護管理センター', lat: 26.18395, lng: 127.754483, link: 'https://www.aniwel-pref.okinawa/'},
-  {name: '那覇市', lat: 26.2157039, lng: 127.7316136, link: 'https://www.city.naha.okinawa.jp/kurasitetuduki/animal/602.html'}
-];
-
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-
-  // 地図の作成
-  var mapLatLng = new google.maps.LatLng({lat: markerData[0]['lat'], lng: markerData[0]['lng']}); // 緯度経度のデータ作成
-  map = new google.maps.Map(document.getElementById('map'), { // #sampleに地図を埋め込む
-    center: mapLatLng, // 地図の中心を指定
-    zoom: 9 // 地図のズームを指定
-  });
-  
-  // マーカー毎の処理
-  for (var i = 0; i < markerData.length; i++) {
-    markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']}); // 緯度経度のデータ作成
-    marker[i] = new google.maps.Marker({ // マーカーの追加
-      position: markerLatLng, // マーカーを立てる位置を指定
-      map: map // マーカーを立てる地図を指定
-    });    
-    infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-      content: '<div class="map">' + markerData[i]['name'] + '</div><a href=' + markerData[i]['link'] + '>保護施設サイト</a>' // 吹き出しに表示する内容
-    });
-    markerEvent(i); // マーカーにクリックイベントを追加
-  }
-}
-
-// マーカーにクリックイベントを追加
-function markerEvent(i) {
-  marker[i].addListener('click', function() { // マーカーをクリックしたとき
-    infoWindow[i].open(map, marker[i]); // 吹き出しの表示
-  });
-}
-
-function codeAddress(){
-  let inputAddress = document.getElementById('address').value;
-
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
+    <script>
+      handler = Gmaps.build('Google');
+      handler.buildMap({
+        provider: {},
+        internal: {
+          id: 'map'
+        }
+      }, function () {
+        markers = handler.addMarkers( < %= ::Temple::Utils.escape_html_safe((raw @hash.to_json)) % > );
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
       });
-      display.textContent = "検索結果：" + results[ 0 ].geometry.location
-    } else {
-      alert('該当する結果がありませんでした：' + status);
-    }
-  });   
-}
-</script>
+    </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap" async defer></script>
+    <div id='map'></div>
+    <style>
+      #map {
+        height: 600px;
+        width: 1140px;
+      }
+    </style>
+
+    <script>
+      let map
+      let geocoder
+
+      const display = document.getElementById('display')
+
+      var marker = [];
+      var infoWindow = [];
+      var markerData = [{
+          name: '東京駅',
+          lat: 35.681236,
+          lng: 139.767125,
+          link: 'https://shuyojoho.metro.tokyo.lg.jp/'
+        },
+        {
+          name: '札幌市',
+          lat: 43.085362,
+          lng: 141.3267162,
+          link: 'http://www.city.sapporo.jp/inuneko/syuuyou_doubutsu/maigoinuneko.html'
+        },
+        {
+          name: '旭川市',
+          lat: 43.771128,
+          lng: 142.3645289,
+          link: 'http://www1.city.asahikawa.hokkaido.jp/files/eiseikensa/Animaal_HP/index.html'
+        },
+        {
+          name: '函館市',
+          lat: 41.7687017,
+          lng: 140.7245605,
+          link: 'http://www.city.hakodate.hokkaido.jp/docs/2014070200084/'
+        },
+        {
+          name: '小樽市',
+          lat: 43.1936429,
+          lng: 140.9912196,
+          link: 'http://www.city.otaru.lg.jp/simin/anzen/doubutu/dog.html'
+        },
+        {
+          name: '青森市',
+          lat: 40.8220849,
+          lng: 140.7782359,
+          link: 'http://www.city.aomori.aomori.jp/hoken-yobou/fukushi-kenkou/kenkou-iryou/inu-neko-doubutsu/wannyansatooya.html'
+        },
+        {
+          name: '八戸市',
+          lat: 40.5089376,
+          lng: 141.4385011,
+          link: 'https://www.city.hachinohe.aomori.jp/kurashi_tetsuzuki/gomi_kankyo_pet/dobutsu_pet/7863.html'
+        },
+        {
+          name: '岩手県県央保健所',
+          lat: 39.7027112,
+          lng: 141.1518524,
+          link: 'https://www.pref.iwate.jp/morioka/hoken/doubutsu/1012494.html'
+        },
+        {
+          name: '中部保健所',
+          lat: 39.3900124,
+          lng: 141.1137109,
+          link: 'https://www.pref.iwate.jp/kennan/hana_hoken/1013542/1013544.html'
+        },
+        {
+          name: '奥州保健所',
+          lat: 39.7027112,
+          lng: 141.1518524,
+          link: 'https://www.pref.iwate.jp/kennan/hoken/doubutsu/1013511.html'
+        },
+        {
+          name: '一関保健所',
+          lat: 38.9358415,
+          lng: 141.1250304,
+          link: 'https://www.pref.iwate.jp/kennan/ichi_hoken/doubutsu/1013648.html'
+        },
+        {
+          name: '大船渡保健所',
+          lat: 39.0952669,
+          lng: 141.7024034,
+          link: 'https://www.pref.iwate.jp/engan/ofuna_hoken/1014212/1014213.html'
+        },
+        {
+          name: '宮古保健所',
+          lat: 39.6476006,
+          lng: 141.9432425,
+          link: 'https://www.pref.iwate.jp/engan/miya_hoken/hogodoubutsu/1014161.html'
+        },
+        {
+          name: '久慈保健所',
+          lat: 40.1921043,
+          lng: 141.7613999,
+          link: 'https://www.pref.iwate.jp/kenpoku/hoken/1014738.html'
+        },
+        {
+          name: '二戸保健所',
+          lat: 40.2688046,
+          lng: 141.2937091,
+          link: 'https://www.pref.iwate.jp/kenpoku/nino_hoken/1014824.html'
+        },
+        {
+          name: '盛岡市保健所',
+          lat: 39.7020917,
+          lng: 141.1522729,
+          link: 'http://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/index.html'
+        },
+        {
+          name: '仙南保健所',
+          lat: 38.0471336,
+          lng: 140.7267292,
+          link: 'https://www.pref.miyagi.jp/soshiki/sn-hohuku/hogodoubutu.html'
+        },
+        {
+          name: '塩釜保健所',
+          lat: 38.3240958,
+          lng: 141.0266619,
+          link: 'https://www.pref.miyagi.jp/soshiki/sd-hohuku/hogoken.html'
+        },
+        {
+          name: '塩釜保健所岩沼支所',
+          lat: 38.1111051,
+          lng: 140.8653491,
+          link: 'https://www.pref.miyagi.jp/soshiki/sh-helth-i/hogokeniwanuma.html'
+        },
+        {
+          name: '塩釜保健所黒川支所',
+          lat: 38.4025132,
+          lng: 140.885183,
+          link: 'https://www.pref.miyagi.jp/soshiki/sh-helth-k/hogodoubutu.html'
+        },
+        {
+          name: '大崎保健所',
+          lat: 38.5665918,
+          lng: 140.9723537,
+          link: 'https://www.pref.miyagi.jp/soshiki/nh-hwfz/oosakihogoken.html'
+        },
+        {
+          name: '栗原保健所',
+          lat: 38.7385708,
+          lng: 141.0165236,
+          link: 'https://www.pref.miyagi.jp/site/kouiki-kurihara/hogoinu.html'
+        },
+        {
+          name: '登米保健所',
+          lat: 38.6837989,
+          lng: 141.196039,
+          link: 'https://www.pref.miyagi.jp/site/kouiki-tome/inuneko3.html'
+        },
+        {
+          name: '石巻保健所',
+          lat: 38.4418289,
+          lng: 141.2556261,
+          link: 'https://www.pref.miyagi.jp/soshiki/et-hc/jueki-hogoken.html'
+        },
+        {
+          name: '仙台市',
+          lat: 38.2694063,
+          lng: 140.9541518,
+          link: 'http://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/hogoneko.html'
+        },
+        {
+          name: '秋田市',
+          lat: 39.6264612,
+          lng: 140.1809717,
+          link: 'https://wannyapia.akita.jp/pages/protective-cats'
+        },
+        {
+          name: '動物愛護センター',
+          lat: 38.3089815,
+          lng: 140.2940635,
+          link: 'https://www.city.yamagata-yamagata.lg.jp/kakuka/kenkoiryo/doubutsuaigo/sogo/inuneko/inu-neko-jouto.html'
+        },
+        {
+          name: '村山保健所',
+          lat: 38.2481794,
+          lng: 140.3169869,
+          link: 'http://www.pref.yamagata.jp/ou/sogoshicho/murayama/301025/murahoseikatsu_kainusisagasi2016.html'
+        },
+        {
+          name: '最上保健所',
+          lat: 38.7527646,
+          lng: 140.3079263,
+          link: 'http://www.pref.yamagata.jp/ou/sogoshicho/mogami/314023/mogami_DandC_densi_keijiban.html'
+        },
+        {
+          name: '置賜保健所',
+          lat: 37.9218555,
+          lng: 140.1147407,
+          link: 'http://www.pref.yamagata.jp/ou/sogoshicho/okitama/325025/oitamaseikatsu_doubutsu/hp_kainushisagashi.html'
+        },
+        {
+          name: '庄内保健所',
+          lat: 38.7993622,
+          lng: 139.8472063,
+          link: 'http://www.pref.yamagata.jp/ou/sogoshicho/shonai/337023/satooya.html'
+        },
+        {
+          name: '福島県動物愛護センター',
+          lat: 37.42208,
+          lng: 140.4435375,
+          link: 'https://www.city.fukushima.fukushima.jp/hoken-doubutsu-aigo/kurashi/pet/82.html'
+        },
+        {
+          name: '郡山市保健所',
+          lat: 37.4054355,
+          lng: 140.3571275,
+          link: 'https://www.city.koriyama.lg.jp/soshikinogoannai/hokenfukushibu/hokenjoseikatsueiseika/gomu/1/2/3759.html'
+        },
+        {
+          name: 'いわき市保健所',
+          lat: 37.0509582,
+          lng: 140.8846186,
+          link: 'http://www.city.iwaki.lg.jp/www/genre/1000100000053/index.html'
+        },
+        {
+          name: '茨城県',
+          lat: 36.408589,
+          lng: 140.2539308,
+          link: 'https://www.pref.ibaraki.jp/hokenfukushi/doshise/hogo/kouji.html'
+        },
+        {
+          name: '栃木県動物愛護指導センター',
+          lat: 36.5099044,
+          lng: 139.865171,
+          link: 'https://tochigi-douai.net/syuuyou.html'
+        },
+        {
+          name: '宇都宮市',
+          lat: 36.5774836,
+          lng: 139.8932917,
+          link: 'https://www.city.utsunomiya.tochigi.jp/kurashi/eisei/pet/1005584.html'
+        },
+        {
+          name: '群馬県',
+          lat: 36.3900508,
+          lng: 139.0585179,
+          link: 'https://www.pref.gunma.jp/cate_list/ct00000674.html'
+        },
+        {
+          name: '前橋市',
+          lat: 36.3894301,
+          lng: 139.0612549,
+          link: 'https://www.city.maebashi.gunma.jp/soshiki/kenko/eiseikensa/gyomu/1/1/1/index.html'
+        },
+        {
+          name: '高崎市',
+          lat: 36.3287289,
+          lng: 138.9666765,
+          link: 'http://www.city.takasaki.gunma.jp/docs/2014040200021/'
+        },
+        {
+          name: 'さいたま市',
+          lat: 35.8583701,
+          lng: 139.6031748,
+          link: 'https://www.city.saitama.jp/001/008/001/p033069.html'
+        },
+        {
+          name: '川越市保健所',
+          lat: 35.9265505,
+          lng: 139.4567489,
+          link: 'https://www.city.kawagoe.saitama.jp/kurashi/pet/dobutsuaigo_kainushi/hogoshuyodobutsu.html'
+        },
+        {
+          name: '越谷市保健所',
+          lat: 35.8910081,
+          lng: 139.78823,
+          link: 'http://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/hogo/index.html'
+        },
+        {
+          name: '川口市保健所',
+          lat: 35.8075941,
+          lng: 139.7219431,
+          link: 'https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/lost/index.html'
+        },
+        {
+          name: '千葉県動物愛護センター',
+          lat: 35.4739759,
+          lng: 139.7847076,
+          link: 'http://www.pref.chiba.lg.jp/aigo/pet/inu-neko/shuuyou/index.html'
+        },
+        {
+          name: '千葉市',
+          lat: 35.6618535,
+          lng: 140.0999568,
+          link: 'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/escape.html'
+        },
+        {
+          name: '動物愛護指導センター',
+          lat: 35.6790334,
+          lng: 139.9613745,
+          link: 'http://www.city.funabashi.lg.jp/kurashi/doubutsu/003/p013242.html'
+        },
+        {
+          name: '柏市保健所',
+          lat: 35.8275994,
+          lng: 140.0066867,
+          link: 'http://www.city.kashiwa.lg.jp/soshiki/061710/p002405.html'
+        },
+        {
+          name: '動物愛護相談センター',
+          lat: 35.6598024,
+          lng: 139.6144419,
+          link: 'https://wannyan.metro.tokyo.lg.jp/'
+        },
+        {
+          name: '多摩支所',
+          lat: 35.6671239,
+          lng: 139.4283905,
+          link: 'https://wannyan.metro.tokyo.lg.jp/'
+        },
+        {
+          name: '八王子市保健所',
+          lat: 35.6572777,
+          lng: 139.3394489,
+          link: 'http://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p002911.html'
+        },
+        {
+          name: '町田市',
+          lat: 35.5466472,
+          lng: 139.4364507,
+          link: 'https://www.city.machida.tokyo.jp/iryo/hokenjo/pet/mayoi/index.html'
+        },
+        {
+          name: '横浜市',
+          lat: 35.4958629,
+          lng: 139.5679407,
+          link: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/maigo/20121004094818.html'
+        },
+        {
+          name: '川崎市',
+          lat: 35.5561929,
+          lng: 139.6719858,
+          link: 'http://www.city.kawasaki.jp/shisetsu/category/39-2-7-1-0-0-0-0-0-0.html'
+        },
+        {
+          name: '相模原市',
+          lat: 35.5698425,
+          lng: 139.3718959,
+          link: 'https://www.city.sagamihara.kanagawa.jp/kurashi/kenko/pet/1007470.html'
+        },
+        {
+          name: '横須賀市',
+          lat: 35.2993961,
+          lng: 139.6310855,
+          link: 'http://www.yokosuka-doubutu.com/'
+        },
+        {
+          name: '藤沢市',
+          lat: 35.3313231,
+          lng: 139.4863661,
+          link: 'http://www.city.fujisawa.kanagawa.jp/seiei/kurashi/dobutsu/syuyoken.html'
+        },
+        {
+          name: '茅ヶ崎市・寒川町',
+          lat: 35.3340734,
+          lng: 139.3978699,
+          link: 'https://www.city.chigasaki.kanagawa.jp/kankyo/pet/1024474.html'
+        },
+        {
+          name: '新潟県動物愛護センター',
+          lat: 37.4373229,
+          lng: 138.7625384,
+          link: 'pref.niigata.lg.jp/sec/seikatueisei/1333314133188.html'
+        },
+        {
+          name: '下越動物保護管理センター',
+          lat: 37.9580509,
+          lng: 139.2936388,
+          link: 'https://www.pref.niigata.lg.jp/sec/shibata_kenkou/1206033358899.html'
+        },
+        {
+          name: '上越動物保護管理センター',
+          lat: 37.1379394,
+          lng: 138.2001052,
+          link: 'https://www.pref.niigata.lg.jp/sec/jouetsu_kenkou/1205169321899.html'
+        },
+        {
+          name: '富山市保健所',
+          lat: 36.6454905,
+          lng: 137.2032883,
+          link: 'https://www.city.toyama.toyama.jp/fukushihokenbu/hokensho/seikatsueiseika/kanshi/inu/doubutunohogohennkann_2_4.html'
+        },
+        {
+          name: '金沢市',
+          lat: 36.6486459,
+          lng: 136.688396,
+          link: 'https://www4.city.kanazawa.lg.jp/23036/pet/pet.html'
+        },
+        {
+          name: '南加賀保健福祉センター',
+          lat: 36.4110116,
+          lng: 136.4627456,
+          link: 'https://www.pref.ishikawa.lg.jp/minamikaga/toppage/seikatu/mayoineko2.html'
+        },
+        {
+          name: '石川中央保健福祉センター',
+          lat: 36.5193473,
+          lng: 136.5617706,
+          link: 'https://www.pref.ishikawa.lg.jp/hc/ishikawa/neko/syuyouneko.html'
+        },
+        {
+          name: '能登中部保健福祉センター',
+          lat: 37.0402537,
+          lng: 136.9693601,
+          link: 'https://www.pref.ishikawa.lg.jp/nanaohc/seikatu/mayoineko.html'
+        },
+        {
+          name: '能登北部保健福祉センター',
+          lat: 37.392037,
+          lng: 136.894435,
+          link: 'https://www.pref.ishikawa.lg.jp/yakuji/doubutsu/notohokubuneko.html'
+        },
+        {
+          name: '動物愛護センター',
+          lat: 35.975805,
+          lng: 136.2010591,
+          link: 'https://www.pref.fukui.lg.jp/doc/doukansi/index.html'
+        },
+        {
+          name: '動物愛護センター嶺南支所',
+          lat: 35.6468665,
+          lng: 136.0663108,
+          link: 'https://www.pref.fukui.lg.jp/doc/doukansi/index.html'
+        },
+        {
+          name: '山梨県福祉保健部動物愛護指導センター',
+          lat: 35.5921155,
+          lng: 138.5547367,
+          link: 'https://www.pref.yamanashi.jp/doubutsu/maigo.html'
+        },
+        {
+          name: '山梨県福祉保健部中北保健福祉事務所（中北保健所）',
+          lat: 35.7007774,
+          lng: 138.4564661,
+          link: 'https://www.pref.yamanashi.jp/ch-hokenf/maigo.html'
+        },
+        {
+          name: '山梨県福祉保健部峡東保健福祉事務所（峡東保健所）',
+          lat: 35.7037413,
+          lng: 138.7105959,
+          link: 'https://www.pref.yamanashi.jp/kt-hokenf/inuneko_maigo.html'
+        },
+        {
+          name: '山梨県福祉保健部峡南保健福祉事務所（峡南保健所）',
+          lat: 35.5467195,
+          lng: 138.4607987,
+          link: 'https://www.pref.yamanashi.jp/kn-hokenf/inunekomaigo.html'
+        },
+        {
+          name: '山梨県福祉保健部富士・東部保健福祉事務所（富士・東部保健所）',
+          lat: 35.480566,
+          lng: 138.7988498,
+          link: 'https://www.pref.yamanashi.jp/ft-hokenf/maigo.html'
+        },
+        {
+          name: '健康支援センター',
+          lat: 35.6556191,
+          lng: 138.5653045,
+          link: 'https://www.city.kofu.yamanashi.jp/hokenjo/2019mayoiinuneko.html'
+        },
+        {
+          name: '佐久保健福祉事務所',
+          lat: 36.2295594,
+          lng: 138.4593689,
+          link: 'https://www.pref.nagano.lg.jp/sakuho/dobutsu/dobutsu/kainushi.html#nekonoitirann'
+        },
+        {
+          name: '上田保健福祉事務所',
+          lat: 36.4006901,
+          lng: 138.2581944,
+          link: 'https://www.pref.nagano.lg.jp/uedaho/dobutsu/boshu.html'
+        },
+        {
+          name: '諏訪保健福祉事務所',
+          lat: 36.0339273,
+          lng: 138.10523,
+          link: 'https://www.pref.nagano.lg.jp/suwaho/dobutsu/inuneko/joto.html'
+        },
+        {
+          name: '伊那保健福祉事務所',
+          lat: 35.8401237,
+          lng: 137.9555996,
+          link: 'https://www.pref.nagano.lg.jp/inaho/dobutsu/inuneko/joto-neko.html'
+        },
+        {
+          name: '飯田保健福祉事務所',
+          lat: 35.5137827,
+          lng: 137.8272239,
+          link: 'https://www.pref.nagano.lg.jp/iidaho/dobutsu/inuneko/kaishu.html'
+        },
+        {
+          name: '木曽保健福祉事務所',
+          lat: 35.8391029,
+          lng: 137.6858046,
+          link: 'https://www.pref.nagano.lg.jp/kisoho/dobutsu/joutotest.html'
+        },
+        {
+          name: '松本保健福祉事務所',
+          lat: 36.2348914,
+          lng: 137.9413378,
+          link: 'https://www.pref.nagano.lg.jp/matsuho/dobutsu/neko-joto.html'
+        },
+        {
+          name: '大町保健福祉事務所',
+          lat: 36.507866,
+          lng: 137.8599742,
+          link: 'https://www.pref.nagano.lg.jp/omachiho/dobutsu/information/joto.html'
+        },
+        {
+          name: '長野保健福祉事務所',
+          lat: 36.6491863,
+          lng: 138.177728,
+          link: 'https://www.pref.nagano.lg.jp/nagaho/dobutsu/joto.html'
+        },
+        {
+          name: '動物愛護センター',
+          lat: 36.6268788,
+          lng: 138.1901488,
+          link: 'https://www.city.nagano.nagano.jp/site/naganoshiaigo/'
+        },
+        {
+          name: '北信保健福祉事務所',
+          lat: 36.8363347,
+          lng: 138.3568772,
+          link: 'https://www.pref.nagano.lg.jp/hokuho/dobutsu/information/joto.html'
+        },
+        {
+          name: '岐阜保健所',
+          lat: 35.4074578,
+          lng: 136.8422924,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22701/gifu-doubutu-joho.html'
+        },
+        {
+          name: '本巣・山県センター',
+          lat: 35.3918347,
+          lng: 136.7130607,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22701/motoyama-dobutsu-joho.html'
+        },
+        {
+          name: '西濃保健所',
+          lat: 35.3559584,
+          lng: 136.6310465,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22703/seinou-dobutsu-joho.html'
+        },
+        {
+          name: '揖斐センター',
+          lat: 35.4908594,
+          lng: 136.5658028,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22703/ibi-dobutsu-joho.html'
+        },
+        {
+          name: '関保健所',
+          lat: 35.5305952,
+          lng: 136.8981045,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22705/joto-inuneko-joho/seki-maigo-joho.html'
+        },
+        {
+          name: '郡上センター',
+          lat: 35.7624898,
+          lng: 136.9477715,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22705/joto-inuneko-joho/gujo-maigo-johou.html'
+        },
+        {
+          name: '可茂保健所',
+          lat: 35.4395034,
+          lng: 137.0233131,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22706/doubutu-joho.html'
+        },
+        {
+          name: '東濃保健所',
+          lat: 35.3450852,
+          lng: 137.1247762,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22708/tono-hokenjo-dobutsu-joho.html'
+        },
+        {
+          name: '恵那保健所',
+          lat: 35.4498787,
+          lng: 137.4308311,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22709/ena-dobutsu-joho.html'
+        },
+        {
+          name: '飛騨保健所',
+          lat: 36.1446462,
+          lng: 137.2387781,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22710/hida-hc-doubutu.html'
+        },
+        {
+          name: '下呂センター',
+          lat: 35.8841938,
+          lng: 137.2052489,
+          link: 'https://www.pref.gifu.lg.jp/kurashi/dobutsu/dobutsu-aigo/22710/gerosentadobutujoho.html'
+        },
+        {
+          name: '岐阜市',
+          lat: 35.4231447,
+          lng: 136.7584151,
+          link: 'https://www.city.gifu.lg.jp/10833.htm'
+        },
+        {
+          name: '静岡県動物管理指導センター',
+          lat: 34.7812122,
+          lng: 137.679601,
+          link: 'https://www.pref.shizuoka.jp/kousei/ko-900/yuzurukai.html'
+        },
+        {
+          name: '動物愛護館',
+          lat: 34.9803719,
+          lng: 138.319855,
+          link: 'https://www.city.shizuoka.lg.jp/000_006621.html'
+        },
+        {
+          name: '浜松市動物愛護教育センター',
+          lat: 34.7646387,
+          lng: 137.6273188,
+          link: 'https://www.hama-aikyou.jp/'
+        },
+        {
+          name: '動物愛護センター ',
+          lat: 35.0756988,
+          lng: 137.2170136,
+          link: 'https://www.pref.aichi.jp/soshiki/doukan-c/'
+        },
+        {
+          name: '動物愛護センター',
+          lat: 35.1814392,
+          lng: 136.9038841,
+          link: 'http://www.city.nagoya.jp/kenkofukushi/page/0000020112.html'
+        },
+        {
+          name: '豊橋市保健所',
+          lat: 34.733274,
+          lng: 137.3688185,
+          link: 'http://www.city.toyohashi.lg.jp/6441.htm'
+        },
+        {
+          name: '岡崎市動物総合センター',
+          lat: 34.9542343,
+          lng: 137.1920584,
+          link: 'https://www.city.okazaki.lg.jp/1100/1107/1149/p008181.html'
+        },
+        {
+          name: '三重県動物愛護推進センター',
+          lat: 34.6918455,
+          lng: 136.4261813,
+          link: 'http://www.pref.mie.lg.jp/ASMILE/70463044506_00002.htm'
+        },
+        {
+          name: '滋賀県動物保護管理センター',
+          lat: 35.0065891,
+          lng: 136.1364916,
+          link: 'http://www.sapca.jp/lost'
+        },
+        {
+          name: '京都動物愛護センター',
+          lat: 34.9710356,
+          lng: 135.7484541,
+          link: 'http://kyoto-ani-love.com/recruit-animal/cat/'
+        },
+        {
+          name: '大阪市動物管理センター',
+          lat: 34.6201348,
+          lng: 135.4632922,
+          link: 'https://www.city.osaka.lg.jp/kenko/page/0000003676.html#work'
+        },
+        {
+          name: '堺市動物指導センター',
+          lat: 34.5797142,
+          lng: 135.4941843,
+          link: 'http://www.city.sakai.lg.jp/kurashi/dobutsu/shidocenter/shidocenter.html'
+        },
+        {
+          name: '動物愛護管理センター',
+          lat: 34.6870497,
+          lng: 135.51843,
+          link: 'http://www.pref.osaka.lg.jp/doaicenter/doaicenter/jyoutoneko.html'
+        },
+        {
+          name: 'アニマルハーモニー大阪',
+          lat: 34.5313638,
+          lng: 135.6036556,
+          link: 'https://animal-osaka.com/'
+        },
+        {
+          name: '東大阪市動物指導センター',
+          lat: 34.6794894,
+          lng: 135.598698,
+          link: 'http://www.city.higashiosaka.lg.jp/0000011324.html'
+        },
+        {
+          name: '寝屋川市保健所',
+          lat: 34.7665585,
+          lng: 135.6196011,
+          link: 'https://www.city.neyagawa.osaka.jp/organization_list/kenkou/hokeneisei/doubutu/inuneko_kankei/aigodoubutu_jouto/1555993190376.html'
+        },
+        {
+          name: '兵庫県動物愛護センター',
+          lat: 34.7736859,
+          lng: 135.3734803,
+          link: 'http://www.hyogo-douai.sakura.ne.jp/jouto.html'
+        },
+        {
+          name: '神戸市',
+          lat: 34.6902436,
+          lng: 135.1932742,
+          link: 'https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/index.html'
+        },
+        {
+          name: '姫路市動物管理センター',
+          lat: 34.8368887,
+          lng: 134.7138679,
+          link: 'https://www.city.himeji.lg.jp/bousai/0000001495.html'
+        },
+        {
+          name: '西宮市動物管理センター',
+          lat: 34.6915579,
+          lng: 135.35927,
+          link: 'https://www.nishi.or.jp/kenko/hokenjojoho/pet/dobutsujodo.html'
+        },
+        {
+          name: 'あかし動物センター',
+          lat: 34.7082344,
+          lng: 134.9519193,
+          link: 'https://www.city.akashi.lg.jp/kankyou/dobutsu/index.html'
+        },
+        {
+          name: '中和保健所動物愛護センター',
+          lat: 34.4883776,
+          lng: 135.9320507,
+          link: 'http://www.pref.nara.jp/dd.aspx?menuid=3371'
+        },
+        {
+          name: '奈良市',
+          lat: 34.679193,
+          lng: 135.8151617,
+          link: 'https://www.city.nara.lg.jp/soshiki/97/10799.html'
+        },
+        {
+          name: '和歌山県動物愛護センタ－',
+          lat: 34.1825843,
+          lng: 135.3454363,
+          link: 'https://www.pref.wakayama.lg.jp/prefg/031601/d00153722.html'
+        },
+        {
+          name: '動物愛護管理センター',
+          lat: 34.247795,
+          lng: 135.1358875,
+          link: 'https://www.facebook.com/wakayamacity.seikatsuhoken'
+        },
+        {
+          name: '鳥取県保健所',
+          lat: 35.5034633,
+          lng: 134.2360643,
+          link: 'https://www.pref.tottori.lg.jp/255878.htm'
+        },
+        {
+          name: '鳥取市保健所',
+          lat: 35.4944028,
+          lng: 134.2200125,
+          link: 'https://www.city.tottori.lg.jp/www/contents/1523601299297/index.html'
+        },
+        {
+          name: '松江保健所',
+          lat: 35.4724566,
+          lng: 133.048287,
+          link: 'https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/jyoto/'
+        },
+        {
+          name: '岡山県動物愛護センター',
+          lat: 34.8079053,
+          lng: 133.9700208,
+          link: 'https://www.pref.okayama.jp/page/353032.html'
+        },
+        {
+          name: '岡山市',
+          lat: 34.6544585,
+          lng: 133.9164212,
+          link: 'https://www.city.okayama.jp/kurashi/0000016469.html'
+        },
+        {
+          name: '倉敷市保健所',
+          lat: 34.5723672,
+          lng: 133.7628485,
+          link: 'https://www.city.kurashiki.okayama.jp/15361.htm'
+        },
+        {
+          name: '動物愛護センター',
+          lat: 34.3867629,
+          lng: 132.9352601,
+          link: 'https://www.pref.hiroshima.lg.jp/site/apc/jouto-rebreed-cat-list.html'
+        },
+        {
+          name: '動物愛護センター',
+          lat: 34.5285002,
+          lng: 133.3374452,
+          link: 'http://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/40037.html'
+        },
+        {
+          name: '呉市動物愛護センター',
+          lat: 34.298439,
+          lng: 132.651541,
+          link: 'https://www.city.kure.lg.jp/soshiki/127/jouto.html'
+        },
+        {
+          name: '山口県動物愛護センター',
+          lat: 34.108248,
+          lng: 131.429773,
+          link: 'https://www.doubutuaigo.pref.yamaguchi.lg.jp/satooya02/cat_list001.html'
+        },
+        {
+          name: '下関市',
+          lat: 33.9578096,
+          lng: 130.9393,
+          link: 'http://www.city.shimonoseki.lg.jp/www/contents/1568088217012/index.html'
+        },
+        {
+          name: '徳島県動物愛護管理センター',
+          lat: 34.050281,
+          lng: 134.417844,
+          link: 'https://douai-tokushima.com/'
+        },
+        {
+          name: 'しっぽの森',
+          lat: 34.2431216,
+          lng: 134.1016089,
+          link: 'https://www.pref.kagawa.lg.jp/content/etc/subsite/sanukidouaicenter/jyouto/s04u6e190311095146.shtml'
+        },
+        {
+          name: '愛媛県動物愛護センター',
+          lat: 33.9095941,
+          lng: 132.872633,
+          link: 'https://www.pref.ehime.jp/h25123/4415/aigo-top.html'
+        },
+        {
+          name: '松山市役所',
+          lat: 33.8516121,
+          lng: 132.7552786,
+          link: 'http://www.city.matsuyama.ehime.jp/kurashi/kurashi/pet/mayoi/mayoiinuneko.html'
+        },
+        {
+          name: '中央小動物管理センター',
+          lat: 33.5335911,
+          lng: 133.5588972,
+          link: 'http://tanabe-animal.jp/publics/index/121/'
+        },
+        {
+          name: '福岡県動物愛護センター',
+          lat: 33.697145,
+          lng: 130.4751756,
+          link: 'http://www.zaidan-fukuoka-douai.or.jp/jyouto.php?syubetsu=2'
+        },
+        {
+          name: '北九州市動物愛護センター',
+          lat: 33.9054451,
+          lng: 130.8495522,
+          link: 'https://www.city.kitakyushu.lg.jp/ho-huku/file_0981.html'
+        },
+        {
+          name: '東部動物愛護管理センター',
+          lat: 33.647419,
+          lng: 130.485547,
+          link: 'http://wannyan.city.fukuoka.lg.jp/'
+        },
+        {
+          name: '久留米市動物管理センター',
+          lat: 33.3293925,
+          lng: 130.5121706,
+          link: 'http://www.city.kurume.fukuoka.jp/1050kurashi/2060hokeneisei/3115doubutsuaigo/2010-0707-1600-465.html'
+        },
+        {
+          name: '佐賀県犬猫譲渡センター いっしょけんね',
+          lat: 33.2014648,
+          lng: 130.0354571,
+          link: 'https://www.pref.saga.lg.jp/kiji00315040/index.html'
+        },
+        {
+          name: 'ながさき犬猫ネット',
+          lat: 32.7553425,
+          lng: 129.864015,
+          link: 'http://animal-net.pref.nagasaki.jp/'
+        },
+        {
+          name: '熊本県動物愛護センター',
+          lat: 32.7898074,
+          lng: 130.7393798,
+          link: 'http://www.kumamoto-doubutuaigo.jp/index.php'
+        },
+        {
+          name: '熊本市動物愛護センター',
+          lat: 32.8287607,
+          lng: 130.7846542,
+          link: 'http://doubutsuaigo.hinokuni-net.jp/index.php'
+        },
+        {
+          name: 'おおいた動物愛護センター',
+          lat: 33.1721627,
+          lng: 131.5372828,
+          link: 'https://oita-aigo.com/transfer'
+        },
+        {
+          name: '宮崎動物愛護センター',
+          lat: 31.836084,
+          lng: 131.403206,
+          link: 'http://dog.pref.miyazaki.lg.jp/'
+        },
+        {
+          name: '鹿児島県動物愛護センター',
+          lat: 31.74105,
+          lng: 130.7083752,
+          link: 'http://dogcat.pref.kagoshima.jp/Search/Jouto_index'
+        },
+        {
+          name: '沖縄県動物愛護管理センター',
+          lat: 26.18395,
+          lng: 127.754483,
+          link: 'https://www.aniwel-pref.okinawa/'
+        },
+        {
+          name: '那覇市',
+          lat: 26.2157039,
+          lng: 127.7316136,
+          link: 'https://www.city.naha.okinawa.jp/kurasitetuduki/animal/602.html'
+        }
+      ];
+
+      function initMap() {
+        geocoder = new google.maps.Geocoder()
+
+        // 地図の作成
+        var mapLatLng = new google.maps.LatLng({
+          lat: markerData[0]['lat'],
+          lng: markerData[0]['lng']
+        }); // 緯度経度のデータ作成
+        map = new google.maps.Map(document.getElementById('map'), { // #sampleに地図を埋め込む
+          center: mapLatLng, // 地図の中心を指定
+          zoom: 9 // 地図のズームを指定
+        });
+
+        // マーカー毎の処理
+        for (var i = 0; i < markerData.length; i++) {
+          markerLatLng = new google.maps.LatLng({
+            lat: markerData[i]['lat'],
+            lng: markerData[i]['lng']
+          }); // 緯度経度のデータ作成
+          marker[i] = new google.maps.Marker({ // マーカーの追加
+            position: markerLatLng, // マーカーを立てる位置を指定
+            map: map // マーカーを立てる地図を指定
+          });
+          infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+            content: '<div class="map">' + markerData[i]['name'] + '</div><a href=' + markerData[i]['link'] +
+              '>保護施設サイト</a>' // 吹き出しに表示する内容
+          });
+          markerEvent(i); // マーカーにクリックイベントを追加
+        }
+      }
+
+      // マーカーにクリックイベントを追加
+      function markerEvent(i) {
+        marker[i].addListener('click', function () { // マーカーをクリックしたとき
+          infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+        });
+      }
+
+      function codeAddress() {
+        let inputAddress = document.getElementById('address').value;
+
+        geocoder.geocode({
+          'address': inputAddress
+        }, function (results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+            display.textContent = "検索結果：" + results[0].geometry.location
+          } else {
+            alert('該当する結果がありませんでした：' + status);
+          }
+        });
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap" async defer>
+    </script>
+
+  </div>
+</div>
