@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!,  only: [:index, :show, :edit, :update, :destroy,:following, :followers, :likes]
-  before_action :dm,  only: [:show,:following, :followers, :likes]
+  before_action :dm,  only: [:show,:following, :followers, :likes, :favos]
   def index
     @users = User.paginate(page: params[:page]).order("RAND()").all
-    #@users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def show
@@ -26,6 +25,12 @@ class UsersController < ApplicationController
     @title = "いいね"
     @posts = @user.likes.paginate(page: params[:page])
     render 'show_like'
+  end
+
+  def favos
+    @title = "お気に入り"
+    @posts = @user.favos.paginate(page: params[:page])
+    render 'show_favo'
   end
 
   def dm

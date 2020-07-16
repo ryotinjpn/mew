@@ -4,12 +4,12 @@
     .row
       .col-lg-9
         %h3= @title
-        - if @user.likes.any?
+        - if @user.favos.any?
           %ol.posts
             = render @posts
           = will_paginate @posts
         - else
-          %h3.text-center いいねしていません！
+          %h3.text-center お気に入りを追加しよう！
       %aside.col-lg-3
         %section.user_info
           = render 'shared/user_info'

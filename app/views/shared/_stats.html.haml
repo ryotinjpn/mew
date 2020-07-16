@@ -1,15 +1,19 @@
 / ログイン後home画面のフォロワーとフォロー数
 - @user ||= current_user
 .stats
-  %a{:href => "#{following_user_path(@user)}"}
+  %a{href: "#{following_user_path(@user)}"}
     %strong#following.stat
       = @user.following.count
     フォロー中
-  %a{:href => "#{followers_user_path(@user)}"}
+  %a{href: "#{followers_user_path(@user)}"}
     %strong#followers.stat
       = @user.followers.count
     フォロワー
-  %a{:href => "#{likes_user_path(@user)}"}
+  %a{href: "#{likes_user_path(@user)}"}
     %strong#likes.stat
       = @user.likes.count
     いいね
+  %a{href: "#{favos_user_path(@user)}"}
+    %strong#favos.stat
+      = @user.favos.count
+    お気に入り
