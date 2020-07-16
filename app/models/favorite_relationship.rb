@@ -1,0 +1,2 @@
+class FavoriteRelationship < ApplicationRecord
+end
