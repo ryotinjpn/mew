@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!,  only: [:index, :show, :edit, :update, :destroy,:following, :followers, :likes]
+  before_action :authenticate_user!,  only: [:index, :show, :edit, :update, :destroy,:following, :followers, :likes, :favos]
   before_action :dm,  only: [:show,:following, :followers, :likes, :favos]
   def index
     @users = User.paginate(page: params[:page]).order("RAND()").all

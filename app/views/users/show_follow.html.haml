@@ -2,7 +2,7 @@
 .container
   .main_view
     .row
-      .col-lg-9
+      .col-lg-8
         %h3= @title
         - if @users.any?
           %ul.users.follow
@@ -10,7 +10,7 @@
           = will_paginate
         - else
           %h3.text-center ユーザーと繋がろう！
-      %aside.col-lg-3
+      %aside.col-lg-4
         %section.user_info
           = render 'shared/user_info'
         %section.stats

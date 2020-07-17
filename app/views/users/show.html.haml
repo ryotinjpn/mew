@@ -2,7 +2,7 @@
   .main_view
     .row
       / タイムライン
-      .col-lg-9
+      .col-lg-8
         - if @user.posts.any?
           %ol.posts
             = render @posts
@@ -10,7 +10,7 @@
         - else
           %h3.text-center 投稿がありません！
       / 画像〜フォロー数まで表示
-      %aside.col-lg-3
+      %aside.col-lg-4
         %section.user_info
           = render 'shared/user_info'
         %section.stats

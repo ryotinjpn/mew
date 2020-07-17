@@ -1,0 +1,2 @@
+$("#favos").html('#{@user.favos.count}');
+$("#favo_form_#{@post.id}").html("#{escape_javascript(render('posts/unfavo',post: @post))}");

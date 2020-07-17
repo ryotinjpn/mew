@@ -2,15 +2,15 @@
 .container
   .main_view
     .row
-      .col-lg-9
+      .col-lg-8
         %h3= @title
         - if @user.favos.any?
           %ol.posts
             = render @posts
           = will_paginate @posts
         - else
-          %h3.text-center お気に入りを追加しよう！
-      %aside.col-lg-3
+          %h3.text-center まだお気に入りに追加された投稿はありません！
+      %aside.col-lg-4
         %section.user_info
           = render 'shared/user_info'
         %section.stats
