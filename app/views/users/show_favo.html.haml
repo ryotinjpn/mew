@@ -1,15 +1,15 @@
+- provide(:title, @user.name)
 .container
   .main_view
     .row
-      / タイムライン
       .col-lg-8
-        - if @user.posts.any?
+        %h3= @title
+        - if @user.favos.any?
           %ol.posts
             = render @posts
           = will_paginate @posts
         - else
-          %h3.text-center 投稿がありません！
-      / 画像〜フォロー数まで表示
+          %h3.text-center まだお気に入りに追加された投稿はありません！
       %aside.col-lg-4
         %section.user_info
           = render 'shared/user_info'

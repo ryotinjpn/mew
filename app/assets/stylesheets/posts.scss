@@ -24,12 +24,17 @@
 
 .user_timeline{
   display: flex;
-  padding:0 0 10px 10px;
+  padding:0 10px 10px 10px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .user_name{
   padding-left: 10px;
+}
+
+.fa-bookmark{
+  font-size: 18px;
 }
 
 .post_form{

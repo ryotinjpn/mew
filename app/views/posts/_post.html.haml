@@ -1,11 +1,18 @@
 / タイムライン
 %li{id: "post-#{post.id}"}
   .user_timeline
-    - if !post.user.image.blank?
-      %img{src: post.user.image, class: 'icon_image_feed'}
-    - else
-      = image_tag 'usericon.png', class: 'icon_image_feed'
-    %span.user_name= link_to post.user.name, post.user
+    .name_timeline
+      - if !post.user.image.blank?
+        %img{src: post.user.image, class: 'icon_image_feed'}
+      - else
+        = image_tag 'usericon.png', class: 'icon_image_feed'
+      %span.user_name= link_to post.user.name, post.user
+    .favo_timeline
+      %span{id: "favo_form_#{post.id}"}
+        - if post.favoed_by.include?(current_user)
+          = render "posts/unfavo", post: post
+        - else
+          = render "posts/favo", post: post
   %div
     - if post.picture?
       - if post.picture.file.content_type.include?('image/')

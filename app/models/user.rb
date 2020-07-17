@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :like_relationships, dependent: :destroy
   has_many :likes, through: :like_relationships, source: :post
 
+  has_many :favorite_relationships, dependent: :destroy
+  has_many :favos, through: :favorite_relationships, source: :post
+
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
@@ -65,6 +68,20 @@ class User < ApplicationRecord
   # 現在のユーザーがライクしていたらtrueを返す
   def likes?(post)
     likes.include?(post)
+  end
+
+  def favo(post)
+    favos << post
+  end
+
+  # マイクロポストをライク解除する
+  def unfavo(post)
+    favorite_relationships.find_by(post_id: post.id).destroy
+  end
+
+  # 現在のユーザーがライクしていたらtrueを返す
+  def favos?(post)
+    favos.include?(post)
   end
 
   def update_with_password(params, * options)
