@@ -11,7 +11,7 @@
   / ダイレクトメッセージ
   - unless @user.id == current_user.id
     - if @isRoom == true
-      %a.fas.fa-envelope.fa_icon2{:href => "/rooms/#{@roomId}"}
+      %a.fas.fa-envelope.fa_icon2{href: "/rooms/#{@roomId}"}
     - else
       = form_with model: @room do |f|
         = fields_for @entry do |e|
