@@ -3,10 +3,11 @@
   .user_timeline
     .name_timeline
       - if !post.user.image.blank?
-        %img{src: post.user.image, class: 'icon_image_feed'}
+        = link_to image_tag(post.user.image.url, class: 'icon_image_feed'), post.user
       - else
-        = image_tag 'usericon.png', class: 'icon_image_feed'
-      %span.user_name= link_to post.user.name, post.user
+        = link_to image_tag('usericon.png', class: 'icon_image_feed'), post.user
+      %span.user_name
+        = link_to post.user.name, post.user
     .favo_timeline
       %span{id: "favo_form_#{post.id}"}
         - if post.favoed_by.include?(current_user)

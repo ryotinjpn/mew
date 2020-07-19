@@ -7,7 +7,7 @@
           Member:
           - @entries.each do |e|
             %strong
-              %a{:href => "/users/#{e.user.id}"}= e.user.name
+              %a{href: "/users/#{e.user.id}"}= e.user.name
         = form_with model: @message, local: true do |f|
           .dm_form
             .form-item

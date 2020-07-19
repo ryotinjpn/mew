@@ -2,7 +2,7 @@
 .user_top
   %h1
     - if !@user.image.blank?
-      %img{src: @user.image, class: 'icon_image_prof'}
+      = image_tag(@user.image.url, class: 'icon_image_prof')
     - else
       = image_tag 'usericon.png', class: 'icon_image_prof'
     = @user.name
@@ -11,7 +11,7 @@
   / ダイレクトメッセージ
   - unless @user.id == current_user.id
     - if @isRoom == true
-      %a.fas.fa-envelope.fa_icon2{:href => "/rooms/#{@roomId}"}
+      %a.fas.fa-envelope.fa_icon2{href: "/rooms/#{@roomId}"}
     - else
       = form_with model: @room do |f|
         = fields_for @entry do |e|
