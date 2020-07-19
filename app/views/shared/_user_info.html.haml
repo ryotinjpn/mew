@@ -2,7 +2,7 @@
 .user_top
   %h1
     - if !@user.image.blank?
-      %img{src: @user.image, class: 'icon_image_prof'}
+      = image_tag(@user.image.url, class: 'icon_image_prof')
     - else
       = image_tag 'usericon.png', class: 'icon_image_prof'
     = @user.name
