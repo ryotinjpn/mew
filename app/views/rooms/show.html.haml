@@ -11,7 +11,7 @@
         = form_with model: @message, local: true do |f|
           .dm_form
             .form-item
-              = f.text_area :body, placeholder: "メッセージを入力して下さい" , :size => 70
+              = f.text_area :body, placeholder: "メッセージを入力して下さい" , size: 70
               = f.hidden_field :room_id, value: @room.id
               %br/
             = f.submit "送信", class: "dm_btn"
@@ -19,11 +19,10 @@
           - if @messages.present?
             - @messages.each do |message|
               %p
-                - if !message.user.image.blank?
-                  %img{src: message.user.image, class: 'icon_image_feed'}
+                - if message.user.image.blank?
+                  = link_to image_tag('usericon.png', class: 'icon_image_prof'), message.user
                 - else
-                  = image_tag 'usericon.png', class: 'icon_image_feed'
-                = link_to message.user.name, "/users/#{message.user_id}"
+                  = link_to image_tag(message.image.url, class: 'icon_image_prof'), message.user
                 %strong= message.body
               %hr/
           - else
