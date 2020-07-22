@@ -13,7 +13,7 @@
     - if @isRoom == true
       %a.fas.fa-envelope.fa_icon2{href: "/rooms/#{@roomId}"}
     - else
-      = form_with model: @room do |f|
+      = form_for @room do |f|
         = fields_for @entry do |e|
           = e.hidden_field :user_id, value: @user.id
         = f.button type: "submit", class: "btn_dm" do

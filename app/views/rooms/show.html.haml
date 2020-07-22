@@ -22,7 +22,7 @@
                 - if message.user.image.blank?
                   = link_to image_tag('usericon.png', class: 'icon_image_prof'), message.user
                 - else
-                  = link_to image_tag(message.image.url, class: 'icon_image_prof'), message.user
+                  = link_to image_tag(message.user.image.url, class: 'icon_image_prof'), message.user
                 %strong= message.body
               %hr/
           - else
