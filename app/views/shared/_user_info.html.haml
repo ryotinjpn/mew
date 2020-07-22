@@ -1,10 +1,10 @@
 / ログイン後home画面のプロフィール画像、名前、メールアドレス
 .user_top
   %h1
-    - if !@user.image.blank?
-      = image_tag(@user.image.url, class: 'icon_image_prof')
-    - else
+    - if @user.image.blank?
       = image_tag 'usericon.png', class: 'icon_image_prof'
+    - else
+      = image_tag(@user.image.url, class: 'icon_image_prof')
     = @user.name
 %span.profile= @user.profile
 .action_btn
