@@ -4,10 +4,10 @@
   .main_view
     .user_timeline
       .name_timeline
-        - if !@post.user.image.blank?
-          = link_to image_tag(@post.user.image.url, class: 'icon_image_feed'), @post.user
-        - else
+        - if @post.user.image.blank?
           = link_to image_tag('usericon.png', class: 'icon_image_feed'), @post.user
+        - else
+          = link_to image_tag(@post.user.image.url, class: 'icon_image_feed'), @post.user
         %span.user_name= link_to @post.user.name, @post.user
       .favo_timeline
         %span{id: "favo_form_#{@post.id}"}
@@ -46,9 +46,9 @@
       - if @comments
         - @comments.each do |comment|
           %p
-            - if !comment.user.image.blank?
-              %img{src: comment.user.image, class: 'icon_image_feed'}
+            - if comment.user.image.blank?
+              = link_to image_tag('usericon.png', class: 'icon_image_feed'), comment.user
             - else
-              = image_tag 'usericon.png', class: 'icon_image_feed'
+              = link_to image_tag(@post.user.image.url, class: 'icon_image_feed'), comment.user
             = link_to comment.user.name, "/users/#{comment.user_id}"
             = comment.text
