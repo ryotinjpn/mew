@@ -1,6 +1,8 @@
 # README
 # ネコ専用動画・画像投稿SNS『MEW』
-http://www.mewjp.com/
+![logo](https://user-images.githubusercontent.com/59902916/88170474-b9865b80-cc58-11ea-94ac-a3fedc4f7deb.jpg)
+
+## http://www.mewjp.com/
 # 概要
 本アプリケーションはネコ好きが集い自分のお気に入り画像・動画を投稿し共有する、ソーシャルネットワーキングサービスです。
 
@@ -27,7 +29,14 @@ http://www.mewjp.com/
       - 保護されているネコや譲渡されたネコの様子を動画で公開すれば、殺処分問題の浸透に繋がる(YouTubeに動画を公開している施設あり)
 
 # DEMO
-gifで動画や写真を貼って、ビューのイメージを掴んでもらいます
+## 画像・動画投稿機能
+![DEMO1](https://user-images.githubusercontent.com/59902916/88168920-1a606480-cc56-11ea-9ed1-595d9d300d97.gif)
+
+## コメント いいね お気に入り登録機能
+![DEMO2](https://user-images.githubusercontent.com/59902916/88169016-4a0f6c80-cc56-11ea-966e-02e6de078975.gif)
+
+## 動物愛護センター位置、サイト情報検索機能
+![DEMO3](https://user-images.githubusercontent.com/59902916/88169028-50054d80-cc56-11ea-85d4-882ada2fc985.gif)
 
 # 工夫したポイント
 - 動物愛護センター位置とサイト情報が直感的に分かりやすくする為、Google Maps APIを用いて検索機能を実装した
@@ -75,7 +84,8 @@ gifで動画や写真を貼って、ビューのイメージを掴んでもら�
 - 施設寄付の決済機能(PAY.JP API)
 
 # DB設計
-
+## ER図
+![mew_erdb](https://user-images.githubusercontent.com/59902916/88169608-2ef12c80-cc57-11ea-805f-3d3e8d05f0ae.jpg)
 ## Userテーブル
 |Column|Type|Options|
 |------|----|-------|
