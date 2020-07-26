@@ -68,8 +68,6 @@
 ## バックエンド
 - Ruby 2.6.5
 - Ruby on Rails 6.0.3.2
-## API
-- Google Maps JavaScript
 ## インフラ
 - AWS
   - EC2
@@ -77,6 +75,11 @@
   - Route 53
 - MySQL 5.6
 - nginx 1.16.1
+- Docker, docker-compose
+- Capistrano
+
+## API
+- Google Maps JavaScript
 
 # 課題や今後実装したい機能
 - グループ作成
