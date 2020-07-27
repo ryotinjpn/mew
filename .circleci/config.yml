@@ -28,13 +28,14 @@ jobs:
             - rails-demo-bundle-v2-
 
       - run:
-          name: バンドラーインストール
+          name: bundler install
           command: |
             gem install bundler
 
       - run:
-        name: バンドルインストール
-        command: bundle check || bundle install
+        name: install dependencies
+        command: |
+          bundle install
 
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
