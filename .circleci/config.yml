@@ -62,7 +62,7 @@ jobs:
           name: DB stay
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
-      - run: mv config/database.yml.ci config/database.yml
+      #- run: mv config/database.yml.ci config/database.yml
 
       - run: bundle exec rails db:create
 
@@ -78,6 +78,19 @@ jobs:
                               --out test_results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+                              
+      - add_ssh_keys:
+        fingerprints:
+          - {{fingerprints}}
+
+      - deploy:
+        name: Capistrano deploy
+        command: |
+          if [ "${CIRCLE_BRANCH}" != "master" ]; then
+            exit 0
+          fi
+          bundle exec cap production deploy
+                            
 
       - store_test_results:
           path: test_results
