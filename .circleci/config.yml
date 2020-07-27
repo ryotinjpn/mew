@@ -22,18 +22,6 @@ jobs:
     steps: 
       - checkout
 
-      - run:
-        name: Update bundler
-        command: |
-          sudo gem update --system
-          sudo gem uninstall bundler
-          sudo rm /usr/local/bin/bundle
-          sudo rm /usr/local/bin/bundler
-          sudo gem install bundler
-      - run:
-        name: Bundler を指定
-        command: bundle -v
-        
       - restore_cache:
           keys:
             - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
@@ -41,7 +29,8 @@ jobs:
 
       - run:
           name: バンドルインストール
-          command: bundle check || bundle install
+          command: |
+            gem install bundler
 
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
