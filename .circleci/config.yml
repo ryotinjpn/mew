@@ -28,9 +28,13 @@ jobs:
             - rails-demo-bundle-v2-
 
       - run:
-          name: バンドルインストール
+          name: バンドラーインストール
           command: |
             gem install bundler
+
+      - run:
+        name: バンドルインストール
+        command: bundle check || bundle install
 
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
@@ -56,6 +60,7 @@ jobs:
           name: DB を待機
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
+      - run: bundle exec rails db:create
       - run: bundle exec rails db:create
       - run: bundle exec rails db:migrate
 
