@@ -21,17 +21,22 @@ jobs:
           
     steps: 
       - checkout
+      
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
 
       - run:
         name: bundler install
         command: |
           gem install bundler
 
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-
+       - run:
+        name: install dependencies
+        command: |
+        bundle install
+        
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
