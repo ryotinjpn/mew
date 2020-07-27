@@ -20,8 +20,20 @@ jobs:
           MYSQL_ROOT_PASSWORD: 'password'
           
     steps: 
-      - checkout 
+      - checkout
 
+      - run:
+        name: Update bundler
+        command: |
+          sudo gem update --system
+          sudo gem uninstall bundler
+          sudo rm /usr/local/bin/bundle
+          sudo rm /usr/local/bin/bundler
+          sudo gem install bundler
+      - run:
+        name: Bundler を指定
+        command: bundle -v
+        
       - restore_cache:
           keys:
             - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
@@ -44,6 +56,7 @@ jobs:
       - run:
           name: Yarn をインストール
           command: yarn install --cache-folder ~/.cache/yarn
+
 
       - save_cache:
           key: rails-demo-yarn-{{ checksum "yarn.lock" }}
