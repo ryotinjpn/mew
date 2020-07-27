@@ -62,8 +62,6 @@ jobs:
           name: DB stay
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
-      - run: mv config/database.yml.ci config/database.yml
-
       - run: bundle exec rails db:create
 
       - run:
@@ -81,3 +79,16 @@ jobs:
 
       - store_test_results:
           path: test_results
+                              
+      - add_ssh_keys:
+          fingerprints:
+            - "43:20:c9:f7:80:d9:89:e2:fc:b0:14:80:89:84:3d:4e"
+
+      - deploy:
+          name: Capistrano deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
+                            
