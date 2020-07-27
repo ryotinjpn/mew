@@ -82,7 +82,7 @@ jobs:
                               
       - add_ssh_keys:
           fingerprints:
-            - "43:20:c9:f7:80:d9:89:e2:fc:b0:14:80:89:84:3d:4e"
+            - "25:df:bd:91:ed:07:50:de:c9:31:6f:b4:f4:d7:6f:8d"
 
       - deploy:
           name: Capistrano deploy
