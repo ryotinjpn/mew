@@ -11,7 +11,7 @@ describe User do
     it "is invalid without a name" do
       user = build(:user, name: nil)
       user.valid?
-     expect(user.errors[:name]).to include("を入力してください")
+      expect(user.errors[:name]).to include("を入力してください")
     end
 
     # 3. emailが空では登録できないこと

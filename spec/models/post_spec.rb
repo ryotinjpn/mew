@@ -10,19 +10,19 @@ describe Post do
 
     context 'can not save' do
       it 'is valid with content' do
-        post  = build(:post, picture: nil)
+        post = build(:post, picture: nil)
         post.valid?
         expect(post .errors[:picture]).to include("を入力してください")
       end
 
       it 'is valid with picture' do
-        post  = build(:post, content: nil)
+        post = build(:post, content: nil)
         post.valid?
         expect(post .errors[:content]).to include("を入力してください")
       end
 
       it 'is invalid without content and picture' do
-        post  = build(:post, content: nil, picture: nil)
+        post = build(:post, content: nil, picture: nil)
         post.valid?
         expect(post .errors[:content]).to include("を入力してください")
       end
@@ -32,6 +32,6 @@ describe Post do
         post.valid?
         expect(post.errors[:user]).to include("を入力してください")
       end
-    end    
+    end
   end
 end

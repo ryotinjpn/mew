@@ -11,18 +11,18 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  
-  resources :posts, only: [:create, :show, :destroy] do
-    resources :comments, only: [:create,:destroy]
+
+  resources :posts, only: %i[create show destroy] do
+    resources :comments, only: %i[create destroy]
     collection do
       get 'search'
     end
   end
-  
-  resources :relationships, only: [:create, :destroy]
-  resources :like_relationships, only: [:create, :destroy]
-  resources :favorite_relationships, only: [:create, :destroy]
+
+  resources :relationships, only: %i[create destroy]
+  resources :like_relationships, only: %i[create destroy]
+  resources :favorite_relationships, only: %i[create destroy]
 
   resources :messages, only: [:create]
-  resources :rooms, only: [:create, :show, :index]
+  resources :rooms, only: %i[create show index]
 end

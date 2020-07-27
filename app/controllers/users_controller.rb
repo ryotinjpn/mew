@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!,  only: [:index, :show, :edit, :update, :destroy,:following, :followers, :likes, :favos]
-  before_action :dm,  only: [:show,:following, :followers, :likes, :favos]
+  before_action :authenticate_user!, only: %i[index show edit update destroy following followers likes favos]
+  before_action :dm, only: %i[show following followers likes favos]
   def index
     @users = User.paginate(page: params[:page]).order("RAND()").all
   end
@@ -35,12 +35,12 @@ class UsersController < ApplicationController
 
   def dm
     @user = User.find(params[:id])
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
-          if cu.room_id == u.room_id then
+          if cu.room_id == u.room_id
             @isRoom = true
             @roomId = cu.room_id
           end
