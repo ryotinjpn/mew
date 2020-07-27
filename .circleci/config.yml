@@ -28,12 +28,12 @@ jobs:
             - rails-demo-bundle-v2-
 
       - run:
-          name: install bundler
+          name: gem bundler install 
           command: |
             gem install bundler
 
       - run:
-          name: bundler install
+          name: Bundle install
           command: |
             bundle install
         
@@ -48,9 +48,8 @@ jobs:
             - rails-demo-yarn-
 
       - run:
-          name: Yarn をインストール
+          name: Yarn install
           command: yarn install --cache-folder ~/.cache/yarn
-
 
       - save_cache:
           key: rails-demo-yarn-{{ checksum "yarn.lock" }}
@@ -60,10 +59,6 @@ jobs:
       - run:
           name: DB を待機
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
-
-      - run: bundle exec rails db:create
-      - run: bundle exec rails db:create
-      - run: bundle exec rails db:migrate
 
       - run:
           name: データベースをセットアップ
