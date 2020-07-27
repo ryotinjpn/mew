@@ -15,8 +15,7 @@ jobs:
           MYSQL_PORT: 3306
           
       - image: circleci/mysql:5.6
-        environment: 
-          MYSQL_DATABASE: 'root'
+        environment:
           MYSQL_ROOT_PASSWORD: 'password'
           
     steps: 
