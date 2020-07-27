@@ -10,5 +10,4 @@ class MainPagesControllerTest < ActionDispatch::IntegrationTest
     get main_pages_help_url
     assert_response :success
   end
-
 end

@@ -4,19 +4,19 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_many :posts, dependent: :destroy
-  
-  has_many :active_relationships, class_name:  "Relationship", 
-                                  foreign_key: "follower_id", 
+
+  has_many :active_relationships, class_name: "Relationship",
+                                  foreign_key: "follower_id",
                                   dependent: :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
+  has_many :passive_relationships, class_name: "Relationship",
                                    foreign_key: "followed_id",
                                    dependent: :destroy
 
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  
+
   has_many :comments
-  
+
   has_many :like_relationships, dependent: :destroy
   has_many :likes, through: :like_relationships, source: :post
 
@@ -87,11 +87,12 @@ class User < ApplicationRecord
       params.delete(:password)
       params.delete(:password_confirmation) if params[:password_confirmation].blank?
     end
-      update_attributes(params, * options)
+    update_attributes(params, * options)
   end
 
   def self.search(search)
     return User.all unless search
+
     User.where('name LIKE(?)', "%#{search}%")
   end
 end

@@ -76,7 +76,7 @@
 - MySQL 5.6
 - nginx 1.16.1
 - Docker, docker-compose
-- Capistrano
+- CircleCI/CD(Capistrano)
 
 ## API
 - Google Maps JavaScript

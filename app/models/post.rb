@@ -10,18 +10,18 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   validates :content, presence: true
   validates :picture, presence: true
-  validate  :picture_size 
+  validate  :picture_size
 
   def self.search(search)
     return Post.all unless search
+
     Post.where('content LIKE(?)', "%#{search}%")
   end
 
   private
+
   # アップロードされた画像のサイズをバリデーションする
   def picture_size
-    if picture.size > 30.megabytes
-      errors.add(:picture, "30MB未満にして下さい")
-    end
+    errors.add(:picture, "30MB未満にして下さい") if picture.size > 30.megabytes
   end
 end

@@ -1,6 +1,6 @@
 class FavoriteRelationshipsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @user = current_user
     @post = Post.find(params[:post_id])
