@@ -21,16 +21,11 @@ jobs:
           
     steps: 
       - checkout
-      
+
       - run:
         name: bundler install
         command: |
           gem install bundler
-
-      - run:
-        name: install dependencies
-        command: |
-          bundle install
 
       - restore_cache:
           keys:
