@@ -58,6 +58,8 @@ jobs:
           name: DB を待機
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
+      - run: mv config/database.yml.ci config/database.yml
+      
       - run:
           name: データベースをセットアップ
           command: bin/rails db:schema:load --trace
