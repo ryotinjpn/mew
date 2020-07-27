@@ -38,8 +38,8 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rspec_junit_formatter', '~> 0.4.1'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :development do
