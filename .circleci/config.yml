@@ -56,8 +56,8 @@ jobs:
           name: DB を待機
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:migrate
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:migrate
 
       - run:
           name: データベースをセットアップ
