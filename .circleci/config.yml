@@ -32,7 +32,7 @@ jobs:
         command: |
           gem install bundler
 
-       - run:
+      - run:
         name: install dependencies
         command: |
         bundle install
