@@ -53,6 +53,10 @@ jobs:
           key: rails-demo-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+            
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
 
       - run:
           name: DB stay
