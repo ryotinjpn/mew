@@ -55,26 +55,13 @@
       <input class="address_btn" type="button" value="検索" onclick="codeAddress()">
     </div>
 
-    <script>
-      handler = Gmaps.build('Google');
-      handler.buildMap({
-        provider: {},
-        internal: {
-          id: 'map'
-        }
-      }, function () {
-        markers = handler.addMarkers( < %= ::Temple::Utils.escape_html_safe((raw @hash.to_json)) % > );
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    </script>
 
     <div id='map'></div>
     <style>
       #map {
         height: 600px;
         width: 1140px;
-      }
+        }
     </style>
 
     <script>
@@ -1043,16 +1030,11 @@
         geocoder.geocode({
           'address': inputAddress
         }, function (results, status) {
-          if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location
             });
-            display.textContent = "検索結果：" + results[0].geometry.location
-          } else {
-            alert('該当する結果がありませんでした：' + status);
-          }
         });
       }
     </script>
