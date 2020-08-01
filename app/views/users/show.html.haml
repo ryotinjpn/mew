@@ -1,17 +1,19 @@
 .container
   .main_view
     .row
+      /画像〜フォロー数まで表示
+      .col-md-4.col-md-push-8
+        %aside
+          %section.user_info
+            = render 'shared/user_info'
+          %section.stats
+            = render 'shared/stats'
       / タイムライン
-      .col-lg-8
+      .col-md-8.col-md-pull-4
         - if @user.posts.any?
           %ol.posts
             = render @posts
           = will_paginate @posts
         - else
           %h3.text-center 投稿がありません！
-      / 画像〜フォロー数まで表示
-      %aside.col-lg-4
-        %section.user_info
-          = render 'shared/user_info'
-        %section.stats
-          = render 'shared/stats'
+      
