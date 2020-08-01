@@ -43,12 +43,10 @@ textarea {
   resize: vertical;
 }
 
-
 .center {
   margin-top: -17px;
   background-color: white;
   text-align: center;
-
   h1 {
     margin-bottom: 10px;
   }
@@ -87,15 +85,12 @@ p {
 }
 
 li {
-  padding: 10px 0;
   border-top: 1px solid #e8e8e8;
   list-style: none;
+  background: none;
 }
 
 /* header */
-header {
-  height: 50px;
-}
 
 .icons{
   display: flex;
@@ -106,9 +101,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
-  width: 1140px;
-  margin: 0 30px;
+
+  width: 100%;
+  margin: 0 10vw;
 }
 
 .icons_bar_rigth{
@@ -140,6 +135,7 @@ header {
   font-size: 22px;
   color: #764B0A;
   cursor: pointer;
+  
 }
 
 /* トップページ */
